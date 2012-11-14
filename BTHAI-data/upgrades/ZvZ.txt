@@ -1,0 +1,12 @@
+Metabolic_Boost: 1
+Burrowing: 1
+Zerg_Carapace:3
+Zerg_Carapace:3
+Zerg_Carapace:3
+Zerg_Melee_Attacks: 3
+Zerg_Melee_Attacks: 3
+Zerg_Flyer_Attacks:2
+Zerg_Flyer_Attacks:2
+Zerg_Flyer_Attacks:2
+Pneumatized_Carapace: 3
+
