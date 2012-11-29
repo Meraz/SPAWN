@@ -18,4 +18,14 @@ void DefilerAgent::computeActions()
 {
 	bool defensive = true;
 	PFManager::getInstance()->computeAttackingUnitActions(this, goal, defensive);
+
+	if(unit->isUnderAttack())
+	{
+		unit->useTech(TechTypes::Dark_Swarm);
+	}
+
+	if(enemyUnitsWithinRange(500))
+	{
+		unit->useTech(TechTypes::Plague);
+	}
 }

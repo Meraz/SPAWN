@@ -22,6 +22,7 @@ public:
 
 	/** Called each update to issue orders. */
 	void computeActions();
+	void useBurrow();
 };
 
 #endif
