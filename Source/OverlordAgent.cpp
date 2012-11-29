@@ -2,6 +2,7 @@
 #include "PFManager.h"
 #include "Commander.h"
 #include "AgentManager.h"
+#include "ExplorationManager.h"
 
 OverlordAgent::OverlordAgent(Unit* mUnit)
 {
@@ -9,10 +10,12 @@ OverlordAgent::OverlordAgent(Unit* mUnit)
 	type = unit->getType();
 	unitID = unit->getID();
 	agentType = "OverlordAgent";
-	//Broodwar->printf("OverlordAgent created (%s)", unit->getType().getName().c_str());
+	Broodwar->printf("OverlordAgent created (%s)", unit->getType().getName().c_str());
 	
 	lastUpdateFrame = Broodwar->getFrameCount();
 	goal = TilePosition(-1, -1);
+	//TilePosition goal = ExplorationManager::getInstance()->getNextToExplore(this);
+
 	updateGoal();
 }
 

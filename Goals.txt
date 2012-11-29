@@ -1,0 +1,17 @@
+Highlevel stuff
+	Analyze code
+	Other exploring
+
+Specific todo
+	No more than one lair
+	Upgrades/Build/Unit order
+	Exploration overlords
+	Improve building placement
+	Advanced squad behaviours
+		Improve caster units (Ex. Zerg burrow)
+	Macro hatchery should not move workers
+	First hatchery should not be a macro
+	Have a look on buildorderscript
+		Hatchery:Macro
+		Hatchery:Expand
+	Douchebag squad

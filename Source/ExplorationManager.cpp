@@ -195,7 +195,7 @@ TilePosition ExplorationManager::getNextToExplore(Squad* squad)
 
 			TilePosition newGoal = TilePosition(bestRegion->getCenter());
 			return newGoal;
-			//Broodwar->printf("Explorer: new goal (%d,%d) I am at (%d,%d) agentGoal (%d,%d)", newGoal.x(), newGoal.y(), curPos.x(), curPos.y(), agent->getGoal().x(), agent->getGoal().y());
+			Broodwar->printf("Explorer: new goal (%d,%d) I am at (%d,%d) agentGoal (%d,%d)", newGoal.x(), newGoal.y(), curPos.x(), curPos.y(), agent->getGoal().x(), agent->getGoal().y());
 		}
 	}
 
