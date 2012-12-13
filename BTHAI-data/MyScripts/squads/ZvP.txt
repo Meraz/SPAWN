@@ -1,5 +1,5 @@
 <start>
-Type=Rush
+Type=Exploration
 Move=Ground
 Name=WorkerRush
 MorphsTo=
@@ -11,7 +11,7 @@ Unit=Zerg_Drone:1
 <end>
 
 <start>
-Type=Rush
+Type=Offensive
 Move=Ground
 Name=RushSquad
 MorphsTo=
@@ -52,6 +52,7 @@ Unit=Zerg_Overlord:1
 Type=Support
 Move=Air
 Name=QueenSquad
+MorphsTo=
 Priority=10
 ActivePriority=10
 OffenseType=Optional
@@ -70,4 +71,7 @@ OffenseType=Optional
 <setup>
 Unit=Zerg_Ultralisk:8
 <end>
+
+
+
 

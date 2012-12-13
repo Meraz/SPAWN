@@ -1,5 +1,5 @@
 <start>
-Type=Rush
+Type=Exploration
 Move=Ground
 Name=WorkerRush
 MorphsTo=
@@ -23,7 +23,7 @@ Unit=Zerg_Mutalisk:12
 <end>
 
 <start>
-Type=Rush
+Type=Offensive
 Move=Ground
 Name=LurkerRushSquad
 MorphsTo=Zerg_Lurker
@@ -71,5 +71,6 @@ OffenseType=Optional
 <setup>
 Unit=Zerg_Defiler:5
 <end>
+
 
 

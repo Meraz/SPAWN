@@ -18,3 +18,8 @@ void ZerglingAgent::computeActions()
 	bool defensive = false;
 	PFManager::getInstance()->computeAttackingUnitActions(this, goal, defensive);
 }
+
+void ZerglingAgent::useBurrow()
+{
+	unit->useTech(TechTypes::Burrowing);
+}

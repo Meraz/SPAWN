@@ -17,5 +17,10 @@ void QueenAgent::computeActions()
 {
 	bool defensive = true;
 	PFManager::getInstance()->computeAttackingUnitActions(this, goal, defensive);
+
+	if(enemyUnitsWithinRange(500))
+	{
+		unit->useTech(TechTypes::Parasite);
+	}
 }
 
