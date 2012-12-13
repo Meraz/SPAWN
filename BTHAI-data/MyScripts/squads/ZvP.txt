@@ -11,6 +11,18 @@ Unit=Zerg_Drone:1
 <end>
 
 <start>
+Type=Defensive
+Move=Ground
+Name=Douche
+MorphsTo=
+Priority=3
+ActivePriority=15
+OffenseType=Optional
+<setup>
+Unit=Zerg_Zergling:15
+<end>
+
+<start>
 Type=Offensive
 Move=Ground
 Name=RushSquad
@@ -71,6 +83,9 @@ OffenseType=Optional
 <setup>
 Unit=Zerg_Ultralisk:8
 <end>
+
+
+
 
 
 

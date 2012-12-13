@@ -78,10 +78,10 @@ bool ResourceManager::hasResources(UnitType type)
 	{
 		if (hasProductionBuilding())
 		{
-			nMinerals += 150;
+			nMinerals += 50;
 			if (nGas > 0)
 			{
-				nGas += 100;
+				nGas += 25;
 			}
 		}
 	}

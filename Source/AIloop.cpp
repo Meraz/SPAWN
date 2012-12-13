@@ -21,12 +21,12 @@ void AIloop::setDebugMode(int mode)
 void AIloop::computeActions()
 {
 	//First, do some checks to see if it is time to resign
-	if (AgentManager::getInstance()->noMiningWorkers() == 0 && Broodwar->self()->minerals() <= 50)
+	/*if (AgentManager::getInstance()->noMiningWorkers() == 0 && Broodwar->self()->minerals() <= 50)
 	{
 		Broodwar->printf("No workers left. Bailing out.");
 		Broodwar->leaveGame();
 		return;
-	}
+	}*/
 	if (AgentManager::getInstance()->countNoBases() == 0 && Broodwar->getFrameCount() > 500)
 	{
 		Broodwar->printf("No bases left. Bailing out.");

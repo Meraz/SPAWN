@@ -18,7 +18,7 @@ OverlordAgent::OverlordAgent(Unit* mUnit)
 	lastUpdateFrame = Broodwar->getFrameCount();
 	
 	srand(time(NULL));
-	goal = TilePosition(rand(), rand());
+	goal = TilePosition(-1, -1);
 	//goal = 
 	updateGoal();
 }

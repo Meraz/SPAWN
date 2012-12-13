@@ -4,6 +4,7 @@
 #include "BuildPlanner.h"
 #include "MySpecialSquad.h"
 #include "ExplorationSquad.h"
+#include "DoucheBagSquad.h"
 #include <fstream>
 #include <sstream>
 
@@ -129,6 +130,10 @@ void SquadFileReader::createSquad()
 	else if (type == "Special")
 	{
 		cSquad = new MySpecialSquad(id, name, priority);
+	}
+	else if (type == "DoucheBag")
+	{
+		cSquad = new DoucheBagSquad(id, name, priority);
 	}
 	else
 	{

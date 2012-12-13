@@ -760,7 +760,7 @@ TilePosition CoverMap::findExpansionSite()
 		}
 		if (BuildPlanner::isZerg())
 		{
-			if (noBases >= 2) taken = true;
+			if (noBases%2 == 1) taken = true;
 		}
 		else
 		{

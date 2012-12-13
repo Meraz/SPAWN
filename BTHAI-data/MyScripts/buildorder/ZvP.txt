@@ -1,8 +1,7 @@
-Zerg_Hatchery
 Zerg_Spawning_Pool
+Zerg_Hatchery
 Zerg_Extractor
 Zerg_Hydralisk_Den
-Zerg_Evolution_Chamber
 Zerg_Evolution_Chamber
 Zerg_Hatchery
 Zerg_Creep_Colony
@@ -23,6 +22,7 @@ Zerg_Hatchery
 Zerg_Extractor
 Zerg_Creep_Colony
 Zerg_Sunken_Colony
+
 
 
 

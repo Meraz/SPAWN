@@ -180,7 +180,7 @@ void StructureAgent::computeActions()
 			}
 		}
 
-		if (!unit->isBeingConstructed() && unit->isIdle() && getUnit()->getType().canProduce())
+		if (/*unit->isIdle() &&*/ getUnit()->getType().canProduce())
 		{
 			//Iterate through all unit types
 			for(set<UnitType>::iterator i=UnitTypes::allUnitTypes().begin();i!=UnitTypes::allUnitTypes().end();i++)
@@ -242,7 +242,7 @@ void StructureAgent::sendWorkers()
 {
 	//We have constructed a new base. Make some workers move here.
 	int noWorkers = AgentManager::getInstance()->getNoWorkers();
-	int toSend = noWorkers / AgentManager::getInstance()->countNoBases();
+	int toSend = noWorkers / (AgentManager::getInstance()->countNoBases() + 1);
 	int hasSent = 0;
 
 	//Broodwar->printf("Sending %d/%d workers to new base", toSend, noWorkers);

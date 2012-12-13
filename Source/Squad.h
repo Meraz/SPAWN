@@ -265,6 +265,8 @@ public:
 	static const int SPECIAL = 5;
 	/** Ground Squad */
 	static const int GROUND = 0;
+	/** Douche Squad */
+	static const int DOUCHEBAG = 6;
 	/** Air Squad */
 	static const int AIR = 1;
 

@@ -90,19 +90,25 @@ void HatcheryAgent::computeActions()
 	//Check for base upgrades
 	if (isOfType(UnitTypes::Zerg_Hatchery))
 	{
-		if (Broodwar->canMake(unit, UnitTypes::Zerg_Lair))
+		if (AgentManager::getInstance()->countNoUnits(UnitTypes::Zerg_Lair) < 1 && 
+			AgentManager::getInstance()->countNoUnits(UnitTypes::Zerg_Hive) < 1)
 		{
-			if (ResourceManager::getInstance()->hasResources(UnitTypes::Zerg_Lair))
+
+			if (Broodwar->canMake(unit, UnitTypes::Zerg_Lair))
 			{
-				ResourceManager::getInstance()->lockResources(UnitTypes::Zerg_Lair);
-				unit->morph(UnitTypes::Zerg_Lair);
-				return;
+				if (ResourceManager::getInstance()->hasResources(UnitTypes::Zerg_Lair))
+				{
+					ResourceManager::getInstance()->lockResources(UnitTypes::Zerg_Lair);
+					unit->morph(UnitTypes::Zerg_Lair);
+					return;
+				}
 			}
 		}
 	}
+
 	if (isOfType(UnitTypes::Zerg_Lair))
 	{
-		if (AgentManager::getInstance()->countNoUnits(UnitTypes::Zerg_Hive) < 2)
+		if (AgentManager::getInstance()->countNoUnits(UnitTypes::Zerg_Hive) < 1)
 		{
 			if (Broodwar->canMake(unit, UnitTypes::Zerg_Hive))
 			{
