@@ -11,6 +11,18 @@ Unit=Zerg_Drone:1
 <end>
 
 <start>
+Type=Defensive
+Move=Ground
+Name=EarlyDefense
+MorphsTo=
+Priority=3
+ActivePriority=1000
+OffenseType=Optional
+<setup>
+Unit=Zerg_Zergling:14
+<end>
+
+<start>
 Type=Offensive
 Move=Air
 Name=AirSquad
@@ -71,6 +83,8 @@ OffenseType=Optional
 <setup>
 Unit=Zerg_Defiler:5
 <end>
+
+
 
 
 
