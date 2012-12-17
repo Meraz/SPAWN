@@ -18,8 +18,22 @@ OverlordAgent::OverlordAgent(Unit* mUnit)
 	lastUpdateFrame = Broodwar->getFrameCount();
 	
 	srand(time(NULL));
-	goal = TilePosition(-1, -1);
-	//goal = 
+	//goal = TilePosition(rand(), rand());
+	goal = TilePosition(0,0);
+
+	//Broodwar->printf("Distance!! (%d)", Broodwar->enemy()->getStartLocation().getDistance(unit->getTilePosition()));
+
+	int a,b;	
+	a = Broodwar->mapWidth()*32;
+	b = Broodwar->mapHeight()*32;
+	Broodwar->printf("mapWidth %d", a);
+	Broodwar->printf("mapHeight %d", b);
+	Broodwar->printf("Overlord spawn x: %d", unit->getTilePosition().x()*32);
+	Broodwar->printf("Overlord spawn y: %d", unit->getTilePosition().y()*32);
+	Broodwar->printf("Enemy start loc x: %d", Broodwar->enemy()->getStartLocation().x());
+	Broodwar->printf("Enemy start location y: %d", Broodwar->enemy()->getStartLocation().y());
+	Broodwar->pingMinimap(1000,1002);
+
 	updateGoal();
 }
 
@@ -28,9 +42,10 @@ void OverlordAgent::updateGoal()
 	BaseAgent* agent = AgentManager::getInstance()->getClosestBase(unit->getTilePosition());
 	if (agent != NULL)
 	{
-		goal = agent->getUnit()->getTilePosition();
+		//goal = agent->getUnit()->getTilePosition();
 		lastUpdateFrame = Broodwar->getFrameCount();
 	}
+	//Broodwar->printf("Distance!! (%d)", unit->getDistance(Position(0,0)));
 }
 
 void OverlordAgent::computeActions()
@@ -46,6 +61,7 @@ void OverlordAgent::computeActions()
 	{
 		goal = TilePosition(-1, -1);
 	}
+
 
 	PFManager::getInstance()->computeAttackingUnitActions(this, goal, true);
 }

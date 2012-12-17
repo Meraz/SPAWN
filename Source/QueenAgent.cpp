@@ -17,10 +17,29 @@ void QueenAgent::computeActions()
 {
 	bool defensive = true;
 	PFManager::getInstance()->computeAttackingUnitActions(this, goal, defensive);
-
-	if(enemyUnitsWithinRange(500))
-	{
-		unit->useTech(TechTypes::Parasite);
-	}
+	Spell_Spawn_Broodling();	
 }
 
+void QueenAgent::Spell_Spawn_Broodling()
+{
+	if(enemyUnitsWithinRange(9*32))
+	{
+		for(set<Unit*>::const_iterator i=Broodwar->enemy()->getUnits().begin(); i!=Broodwar->enemy()->getUnits().end(); i++)
+		{
+			//Enemy seen
+			if ((*i)->exists())
+			{
+				if((*i)->getType() == UnitTypes::Terran_Siege_Tank_Tank_Mode || (*i)->getType() == UnitTypes::Terran_Siege_Tank_Siege_Mode)
+				{
+					unit->useTech(TechTypes::Spawn_Broodlings, (*i));	
+					break;
+				}
+				if((*i)->getType().isOrganic())
+				{
+					unit->useTech(TechTypes::Spawn_Broodlings, (*i));
+					break;
+				}
+			}
+		}
+	}
+}

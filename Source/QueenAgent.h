@@ -17,7 +17,8 @@ using namespace std;
 class QueenAgent : public UnitAgent {
 
 private:
-	
+	void Spell_Spawn_Broodling();
+
 public:
 	QueenAgent(Unit* mUnit);
 
