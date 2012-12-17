@@ -58,12 +58,13 @@ OffenseType=Required
 <setup>
 Unit=Zerg_Zergling:20
 <end>
+
 <start>
-Type=Defensive
+Type=Offensive
 Move=Ground
-Name=MainAttackSquad
+Name=GroundAttackSquad
 MorphsTo=
-Priority=15
+Priority=13
 ActivePriority=10
 OffenseType=Optional
 <setup>
@@ -76,12 +77,11 @@ Move=Air
 Name=ExplorationSquad
 MorphsTo=
 Priority=9
-ActivePriority=50
+ActivePriority=150
 OffenseType=Optional
 <setup>
 Unit=Zerg_Mutalisk:1
 <end>
-
 
 
 <start>
@@ -89,10 +89,11 @@ Type=Offensive
 Move=Air
 Name=ScourgeSuicideSquad
 MorphsTo=
-Priority=11
+Priority=15
 ActivePriority=10
 OffenseType=Optional
 <setup>
 Unit=Zerg_Scourge:10
 <end>
+
 

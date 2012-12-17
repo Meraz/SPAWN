@@ -19,7 +19,7 @@ Priority=3
 ActivePriority=1000
 OffenseType=Optional
 <setup>
-Unit=Zerg_Zergling:14
+Unit=Zerg_Zergling:20
 <end>
 
 <start>
@@ -83,6 +83,8 @@ OffenseType=Optional
 <setup>
 Unit=Zerg_Defiler:5
 <end>
+
+
 
 
 

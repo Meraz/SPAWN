@@ -185,7 +185,7 @@ bool BuildPlanner::shallBuildSupply()
 	//3. Check if we need supplies
 	int supplyTotal = Broodwar->self()->supplyTotal() / 2;
 	int supplyUsed = Broodwar->self()->supplyUsed() / 2;
-	if (supplyTotal - supplyUsed > 8)
+	if (supplyTotal - supplyUsed > 3)
 	{
 		return false;
 	}

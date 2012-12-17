@@ -43,7 +43,9 @@ void HatcheryAgent::computeActions()
 		{
 			sendWorkers();
 			hasSentWorkers = true;
-			BuildPlanner::getInstance()->addRefinery();
+			int real_nr_of_bases = AgentManager::getInstance()->countNoUnits(UnitTypes::Zerg_Hatchery) + AgentManager::getInstance()->countNoUnits(UnitTypes::Zerg_Lair) + AgentManager::getInstance()->countNoUnits(UnitTypes::Zerg_Hive);
+			if(real_nr_of_bases%2 == 0)
+				BuildPlanner::getInstance()->addRefinery();
 
 			/*if (AgentManager::getInstance()->countNoUnits(UnitTypes::Zerg_Spawning_Pool) > 0)
 			{
