@@ -276,7 +276,8 @@ void BTHAIModule::onUnitCreate(BWAPI::Unit* unit)
 {
 	if (Broodwar->isReplay() || Broodwar->getFrameCount() <= 1) return;
 
-	loop->addUnit(unit);
+	if (unit->getPlayer()->getID() == Broodwar->self()->getID())
+		loop->addUnit(unit);
 }
 
 void BTHAIModule::onUnitDestroy(BWAPI::Unit* unit) 
@@ -292,10 +293,12 @@ void BTHAIModule::onUnitMorph(BWAPI::Unit* unit)
 
 	if (BuildPlanner::isZerg())
 	{
-		loop->morphUnit(unit);
+		if (unit->getPlayer()->getID() == Broodwar->self()->getID())
+			loop->morphUnit(unit);
 	}
 	else
 	{
+		if (unit->getPlayer()->getID() == Broodwar->self()->getID())
 		loop->addUnit(unit);
 	}
 }

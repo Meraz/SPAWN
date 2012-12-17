@@ -742,6 +742,9 @@ TilePosition CoverMap::findExpansionSite()
 	{
 		TilePosition pos = (*i)->getTilePosition();
 		bool taken = false;
+
+	//	AgentManager::getInstance()->countNoUnits(UnitTypes::Zerg_Lair) < 1 && 
+	//		AgentManager::getInstance()->countNoUnits(UnitTypes::Zerg_Hive) < 1)
 		
 		//Check if own buildings are close
 		vector<BaseAgent*> agents = AgentManager::getInstance()->getAgents();
@@ -758,9 +761,11 @@ TilePosition CoverMap::findExpansionSite()
 				}
 			}
 		}
+		int real_nr_of_bases = AgentManager::getInstance()->countNoUnits(UnitTypes::Zerg_Hatchery) + AgentManager::getInstance()->countNoUnits(UnitTypes::Zerg_Lair) + AgentManager::getInstance()->countNoUnits(UnitTypes::Zerg_Hive);
 		if (BuildPlanner::isZerg())
 		{
-			if (noBases%2 == 1) taken = true;
+			if (noBases >= 1 && noBases < 3)
+				if (real_nr_of_bases%2 == 1) taken = true;
 		}
 		else
 		{

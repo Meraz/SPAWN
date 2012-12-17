@@ -91,8 +91,8 @@ bool ResourceManager::hasResources(UnitType type)
 
 bool ResourceManager::hasResources(UpgradeType type)
 {
-	int nMinerals = type.mineralPrice();
-	int nGas = type.gasPrice();
+	int nMinerals = type.mineralPrice()+ 100;
+	int nGas = type.gasPrice() + 100;
 
 	return hasResources(nMinerals, nGas);
 }

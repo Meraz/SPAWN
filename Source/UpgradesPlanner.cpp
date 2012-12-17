@@ -38,7 +38,7 @@ bool UpgradesPlanner::checkUpgrade(BaseAgent* agent)
 	if (agent->isAlive() && agent->getUnit()->isIdle())
 	{
 		Unit* unit = agent->getUnit();
-
+		bool CantBuildTech = false;
 		//Check techsP1
 		for (int i = 0; i < (int)techsP1.size(); i++)
 		{
@@ -53,10 +53,12 @@ bool UpgradesPlanner::checkUpgrade(BaseAgent* agent)
 				unit->research(type);
 				return true;
 			}
+			CantBuildTech = true;
 		}
 		//Check techsP2
-		if ((int)techsP1.size() == 0)
+		if ((int)techsP1.size() == 0 || CantBuildTech == true)
 		{
+			CantBuildTech = false;
 			for (int i = 0; i < (int)techsP2.size(); i++)
 			{
 				TechType type = techsP2.at(i);
@@ -70,10 +72,11 @@ bool UpgradesPlanner::checkUpgrade(BaseAgent* agent)
 					unit->research(type);
 					return true;
 				}
+				CantBuildTech = true;
 			}
 		}
 		//Check techsP3
-		if ((int)techsP1.size() == 0 && (int)techsP2.size() == 0)
+		if ((int)techsP1.size() == 0 && (int)techsP2.size() == 0 || CantBuildTech == true)
 		{
 			for (int i = 0; i < (int)techsP3.size(); i++)
 			{
@@ -103,9 +106,10 @@ bool UpgradesPlanner::checkUpgrade(BaseAgent* agent)
 					return true;
 				}
 			}
+			CantBuildTech = true;
 		}
 		//Check upgradesP2
-		if ((int)upgradesP1.size() == 0)
+		if ((int)upgradesP1.size() == 0 || CantBuildTech == true)
 		{
 			for (int i = 0; i < (int)upgradesP2.size(); i++)
 			{
@@ -119,9 +123,10 @@ bool UpgradesPlanner::checkUpgrade(BaseAgent* agent)
 					}
 				}
 			}
+			CantBuildTech = true;
 		}
 		//Check upgradesP3
-		if ((int)upgradesP1.size() == 0 && (int)upgradesP2.size() == 0)
+		if ((int)upgradesP1.size() == 0 && (int)upgradesP2.size() == 0 || CantBuildTech == true)
 		{
 			for (int i = 0; i < (int)upgradesP3.size(); i++)
 			{
