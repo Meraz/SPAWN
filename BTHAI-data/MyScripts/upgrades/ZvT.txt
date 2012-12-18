@@ -1,4 +1,4 @@
-Metabolic_Boost: 1
+Metabolic_Boost: 3
 Lurker_Aspect:1
 Zerg_Carapace:3
 Zerg_Carapace:3
@@ -15,6 +15,7 @@ Zerg_Flyer_Attacks:2
 Dark_Swarm: 2
 Plague:3
 Pneumatized_Carapace: 3
+
 
 
 

@@ -1,13 +1,13 @@
 <start>
 Type=Exploration
 Move=Ground
-Name=WorkerRush
+Name=Exploration
 MorphsTo=
 Priority=2
 ActivePriority=1000
 OffenseType=Optional
 <setup>
-Unit=Zerg_Drone:1
+Unit=Zerg_Zergling:2
 <end>
 
 <start>
@@ -16,8 +16,8 @@ Move=Ground
 Name=EarlyDefense
 MorphsTo=
 Priority=3
-ActivePriority=1000
-OffenseType=Optional
+ActivePriority=20
+OffenseType=Required
 <setup>
 Unit=Zerg_Zergling:20
 <end>
@@ -27,7 +27,7 @@ Type=Offensive
 Move=Air
 Name=AirSquad
 MorphsTo=
-Priority=9
+Priority=15
 ActivePriority=20
 OffenseType=Optional
 <setup>
@@ -37,13 +37,13 @@ Unit=Zerg_Mutalisk:12
 <start>
 Type=Offensive
 Move=Ground
-Name=LurkerRushSquad
+Name=ExtraLurkerSquad
 MorphsTo=Zerg_Lurker
-Priority=9
-ActivePriority=1000
+Priority=10
+ActivePriority=150
 OffenseType=Optional
 <setup>
-Unit=Zerg_Hydralisk:8
+Unit=Zerg_Hydralisk:9
 <end>
 
 <start>
@@ -51,7 +51,7 @@ Type=Offensive
 Move=Ground
 Name=LurkerSquad
 MorphsTo=Zerg_Lurker
-Priority=10
+Priority=9
 ActivePriority=10
 OffenseType=Required
 <setup>
@@ -77,12 +77,20 @@ Type=Support
 Move=Ground
 Name=DefilerSquad
 MorphsTo=
-Priority=10
+Priority=11
 ActivePriority=10
 OffenseType=Optional
 <setup>
 Unit=Zerg_Defiler:5
 <end>
+
+
+
+
+
+
+
+
 
 
 
