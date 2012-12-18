@@ -1,5 +1,5 @@
 #ifndef __OVERLORDAGENT_H__
-#define __ZEALOTAGENT_H__
+#define __OVERLORDAGENT_H__
 
 #include <BWAPI.h>
 #include "UnitAgent.h"

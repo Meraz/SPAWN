@@ -20,7 +20,7 @@ void LurkerAgent::computeActions()
 	bool defensive = false;
 	PFManager::getInstance()->computeAttackingUnitActions(this, goal, defensive);
 
-	if(enemyUnitsWithinRange(500))
+	if(enemyUnitsWithinRange(300))
 	{
 		unit->useTech(TechTypes::Burrowing);
 	}

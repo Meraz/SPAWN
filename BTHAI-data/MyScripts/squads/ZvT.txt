@@ -16,10 +16,10 @@ Move=Ground
 Name=EarlyDefense
 MorphsTo=
 Priority=3
-ActivePriority=20
+ActivePriority=10
 OffenseType=Required
 <setup>
-Unit=Zerg_Zergling:20
+Unit=Zerg_Hydralisk:20
 <end>
 
 <start>
@@ -51,7 +51,7 @@ Type=Offensive
 Move=Ground
 Name=LurkerSquad
 MorphsTo=Zerg_Lurker
-Priority=9
+Priority=4
 ActivePriority=10
 OffenseType=Required
 <setup>
@@ -63,7 +63,7 @@ Type=Offensive
 Move=Ground
 Name=MainAttackSquad
 MorphsTo=
-Priority=10
+Priority=5
 ActivePriority=10
 OffenseType=Required
 <setup>
@@ -77,12 +77,15 @@ Type=Support
 Move=Ground
 Name=DefilerSquad
 MorphsTo=
-Priority=11
+Priority=10
 ActivePriority=10
 OffenseType=Optional
 <setup>
 Unit=Zerg_Defiler:5
 <end>
+
+
+
 
 
 

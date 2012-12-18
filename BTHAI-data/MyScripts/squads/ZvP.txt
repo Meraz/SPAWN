@@ -1,37 +1,13 @@
 <start>
 Type=Exploration
 Move=Ground
-Name=WorkerRush
+Name=Exploration
 MorphsTo=
 Priority=2
-ActivePriority=1000
+ActivePriority=50
 OffenseType=Optional
 <setup>
-Unit=Zerg_Drone:1
-<end>
-
-<start>
-Type=Defensive
-Move=Ground
-Name=Douche
-MorphsTo=
-Priority=3
-ActivePriority=15
-OffenseType=Optional
-<setup>
-Unit=Zerg_Zergling:15
-<end>
-
-<start>
-Type=Offensive
-Move=Ground
-Name=RushSquad
-MorphsTo=
-Priority=9
-ActivePriority=1000
-OffenseType=Optional
-<setup>
-Unit=Zerg_Hydralisk:8
+Unit=Zerg_Zergling:2
 <end>
 
 <start>
@@ -39,11 +15,12 @@ Type=Defensive
 Move=Ground
 Name=Homeguard
 MorphsTo=
-Priority=10
-ActivePriority=10
+Priority=3
+ActivePriority=140
 OffenseType=Required
 <setup>
-Unit=Zerg_Hydralisk:8
+Unit=Zerg_Zergling: 40
+Unit=Zerg_Overlord:1
 <end>
 
 <start>
@@ -59,6 +36,17 @@ Unit=Zerg_Hydralisk:20
 Unit=Zerg_Overlord:1
 <end>
 
+<start>
+Type=Offensive
+Move=Ground
+Name=ExtraAttackSquad
+MorphsTo=
+Priority=10
+ActivePriority=10
+OffenseType=Optional
+<setup>
+Unit=Zerg_Hydralisk:10
+<end>
 
 <start>
 Type=Support
@@ -83,6 +71,12 @@ OffenseType=Optional
 <setup>
 Unit=Zerg_Ultralisk:8
 <end>
+
+
+
+
+
+
 
 
 

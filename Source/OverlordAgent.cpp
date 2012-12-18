@@ -19,7 +19,7 @@ OverlordAgent::OverlordAgent(Unit* mUnit)
 	
 	srand(time(NULL));
 	//goal = TilePosition(rand(), rand());
-	goal = TilePosition(0,0);
+	goal = TilePosition(-1,-1);
 
 	//Broodwar->printf("Distance!! (%d)", Broodwar->enemy()->getStartLocation().getDistance(unit->getTilePosition()));
 
@@ -42,7 +42,7 @@ void OverlordAgent::updateGoal()
 	BaseAgent* agent = AgentManager::getInstance()->getClosestBase(unit->getTilePosition());
 	if (agent != NULL)
 	{
-		//goal = agent->getUnit()->getTilePosition();
+		goal = agent->getUnit()->getTilePosition();
 		lastUpdateFrame = Broodwar->getFrameCount();
 	}
 	//Broodwar->printf("Distance!! (%d)", unit->getDistance(Position(0,0)));

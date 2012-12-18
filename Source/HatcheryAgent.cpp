@@ -43,9 +43,9 @@ void HatcheryAgent::computeActions()
 		{
 			sendWorkers();
 			hasSentWorkers = true;
-			int real_nr_of_bases = AgentManager::getInstance()->countNoUnits(UnitTypes::Zerg_Hatchery) + AgentManager::getInstance()->countNoUnits(UnitTypes::Zerg_Lair) + AgentManager::getInstance()->countNoUnits(UnitTypes::Zerg_Hive);
+			/*int real_nr_of_bases = AgentManager::getInstance()->countNoUnits(UnitTypes::Zerg_Hatchery) + AgentManager::getInstance()->countNoUnits(UnitTypes::Zerg_Lair) + AgentManager::getInstance()->countNoUnits(UnitTypes::Zerg_Hive);
 			if(real_nr_of_bases%2 == 0)
-				BuildPlanner::getInstance()->addRefinery();
+				BuildPlanner::getInstance()->addRefinery();*/
 
 			/*if (AgentManager::getInstance()->countNoUnits(UnitTypes::Zerg_Spawning_Pool) > 0)
 			{
@@ -71,14 +71,16 @@ void HatcheryAgent::computeActions()
 		}
 	}
 	//Build units
-	if (checkBuildUnit(UnitTypes::Zerg_Queen)) return;
-	if (checkBuildUnit(UnitTypes::Zerg_Mutalisk)) return;
-	if (checkBuildUnit(UnitTypes::Zerg_Hydralisk)) return;
-	if (checkBuildUnit(UnitTypes::Zerg_Zergling)) return;
-	if (checkBuildUnit(UnitTypes::Zerg_Defiler)) return;
-	if (checkBuildUnit(UnitTypes::Zerg_Ultralisk)) return;
-	if (checkBuildUnit(UnitTypes::Zerg_Scourge)) return;
-
+	if (AgentManager::getInstance()->noMiningWorkers() > 6 * (AgentManager::getInstance()->countNoBases() - 1))
+	{
+		if (checkBuildUnit(UnitTypes::Zerg_Queen)) return;
+		if (checkBuildUnit(UnitTypes::Zerg_Mutalisk)) return;
+		if (checkBuildUnit(UnitTypes::Zerg_Hydralisk)) return;
+		if (checkBuildUnit(UnitTypes::Zerg_Zergling)) return;
+		if (checkBuildUnit(UnitTypes::Zerg_Defiler)) return;
+		if (checkBuildUnit(UnitTypes::Zerg_Ultralisk)) return;
+		if (checkBuildUnit(UnitTypes::Zerg_Scourge)) return;
+	}
 	//Create workers
 	if (ResourceManager::getInstance()->needWorker())
 	{

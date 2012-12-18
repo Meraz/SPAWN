@@ -1,14 +1,3 @@
-<start>
-Type=Exploration
-Move=Ground
-Name=WorkerRush
-MorphsTo=
-Priority=1
-ActivePriority=1000
-OffenseType=Optional
-<setup>
-Unit=Zerg_Drone:1
-<end>
 
 <start>
 Type=Exploration
@@ -95,5 +84,6 @@ OffenseType=Optional
 <setup>
 Unit=Zerg_Scourge:10
 <end>
+
 
 
