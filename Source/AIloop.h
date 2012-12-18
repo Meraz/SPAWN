@@ -6,6 +6,7 @@
 #include "ExplorationManager.h"
 #include "Commander.h"
 #include "BuildPlanner.h"
+#include "OverlordManager.h"
 
 using namespace BWAPI;
 using namespace BWTA;

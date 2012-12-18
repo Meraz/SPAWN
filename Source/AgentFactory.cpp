@@ -114,7 +114,10 @@ BaseAgent* AgentFactory::createZergAgent(Unit* unit)
 		//Add agents for special buildings here
 		if (type.getID() == UnitTypes::Zerg_Hatchery.getID())
 		{
-			return new HatcheryAgent(unit);
+			HatcheryAgent* lAgent = new HatcheryAgent(unit);
+			OverlordManager::getInstance()->AddHatchery(lAgent);
+			return lAgent;
+			//return new HatcheryAgent(unit);
 		}
 		else if (type.getID() == UnitTypes::Zerg_Lair.getID())
 		{
@@ -139,7 +142,9 @@ BaseAgent* AgentFactory::createZergAgent(Unit* unit)
 #if DISABLE_UNIT_AI == 0
 		if (type.getID() == UnitTypes::Zerg_Overlord.getID())
 		{
-			return new OverlordAgent(unit);
+			OverlordAgent* lAgent = new OverlordAgent(unit);
+			OverlordManager::getInstance()->AddOverlord(lAgent);
+			return lAgent;
 		}
 		else if (type.getID() == UnitTypes::Zerg_Zergling.getID())
 		{

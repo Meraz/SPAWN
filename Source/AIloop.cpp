@@ -38,6 +38,7 @@ void AIloop::computeActions()
 	BuildPlanner::getInstance()->computeActions();
 	Commander::getInstance()->computeActions();
 	ExplorationManager::getInstance()->computeActions();
+	OverlordManager::getInstance()->computeActions();
 }
 
 void AIloop::addUnit(Unit* unit)

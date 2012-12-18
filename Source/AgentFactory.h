@@ -2,6 +2,7 @@
 #define __AGENTFACTORY_H__
 
 #include "BaseAgent.h"
+#include "OverlordManager.h"
 
 using namespace BWAPI;
 using namespace std;

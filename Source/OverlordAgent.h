@@ -13,14 +13,18 @@ using namespace std;
  *
  * Author: Johan Hagelback (johan.hagelback@gmail.com)
  */
+
 class OverlordAgent : public UnitAgent {
 
 private:
 	int lastUpdateFrame;
 	void updateGoal();
+	TilePosition mPointOfInterest; 
 
 public:
 	OverlordAgent(Unit* mUnit);
+
+	void SetPointOfInterest(TilePosition lPointOfInterest);
 
 	/** Called each update to issue orders. */
 	void computeActions();
