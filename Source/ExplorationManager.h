@@ -178,6 +178,10 @@ public:
 	/** Returns the next position to explore for this squad. */
 	TilePosition getNextToExplore(Squad* squad);
 
+	/** Returns the next position to explore for this unit. */
+	TilePosition getNextToExplore(UnitAgent* lUnitAgent);
+
+
 	/** Searches for the next position to expand the base to. */
 	TilePosition searchExpansionSite();
 

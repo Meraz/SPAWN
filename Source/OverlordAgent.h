@@ -3,6 +3,8 @@
 
 #include <BWAPI.h>
 #include "UnitAgent.h"
+#include "OverlordModule.h"
+#include "OverlordStructs.h"
 using namespace BWAPI;
 using namespace std;
 
@@ -18,16 +20,18 @@ class OverlordAgent : public UnitAgent {
 
 private:
 	int lastUpdateFrame;
+	OverlordModule* mOverlordModule;
 	void updateGoal();
-	TilePosition mPointOfInterest; 
+
 
 public:
 	OverlordAgent(Unit* mUnit);
 
-	void SetPointOfInterest(TilePosition lPointOfInterest);
-
 	/** Called each update to issue orders. */
 	void computeActions();
+	void SetOverlordModule(OverlordModule* lOverlordModule);
+	OverlordModule* GetOverlordModule();
+	
 };
 
 #endif

@@ -5,7 +5,7 @@
 #include <BWAPI.h>
 #include <vector>
 #include "OverlordAgent.h"
-#include "HatcheryAgent.h"
+#include "OverlordExplorer.h"
 
 using namespace BWAPI;
 using namespace std;
@@ -17,46 +17,32 @@ using namespace std;
  * Author: Rasmus Tilljander (tilljander.rasmus@gmail.com)
  */
 
-enum OverlordState
-{
-	UnderAttack,
-	HoveringBase,
-	NoAssignment,
-	Exploring
-};
-
-struct EnemySpotted
-{
-	int time;				//Save when last spotted
-	TilePosition position;	//Position where it was spotted
-};
-
-struct PointOfInterest		//Le bases
-{
-	vector<UnitAgent*> mHoveringOverlords;
-	TilePosition position;
-};
-
-
 class OverlordManager
 {
 public:	
+	bool a;
 	static OverlordManager* getInstance();
 	void computeActions();
 
 	void UpdateGoal();
 
 	void AddOverlord(OverlordAgent* lOverlord);
-	void AddHatchery(HatcheryAgent* lHatchery);
+	void AddPointOfInterest(PointOfInterest* lPoint);
 
 private:
 	OverlordManager();
 	~OverlordManager();
+	void UniHatchery();
+	void DuHatchery();
+	void TriHatchery();
+	void MultipleHatchery();
 
 	vector<OverlordAgent*> mOverlord;
-	vector<HatcheryAgent*> mHatchery;
-	vector<EnemySpotted> mEnemySpotted;
+	vector<EnemySpotted*>* mEnemySpotted;
+	vector<PointOfInterest*>* mPointOfInterest;
 	unsigned int mMapSizeX, mMapSizeY;
+	bool mNewBasesSinceLast;
+	int lastCallFrame;
 
 protected:
 	 static OverlordManager* instance;	//Can be private

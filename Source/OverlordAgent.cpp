@@ -14,41 +14,32 @@ OverlordAgent::OverlordAgent(Unit* mUnit)
 	unitID = unit->getID();
 	agentType = "OverlordAgent";
 	Broodwar->printf("OverlordAgent created (%s)", unit->getType().getName().c_str());
+	mOverlordModule = NULL;
 	
 	lastUpdateFrame = Broodwar->getFrameCount();
 	
-	srand(time(NULL));
+	//srand(time(NULL));
 	//goal = TilePosition(rand(), rand());
 	goal = TilePosition(-1,-1);
 
-	//Broodwar->printf("Distance!! (%d)", Broodwar->enemy()->getStartLocation().getDistance(unit->getTilePosition()));
-
-	int a,b;	
-	a = Broodwar->mapWidth()*32;
-	b = Broodwar->mapHeight()*32;
-	Broodwar->printf("mapWidth %d", a);
-	Broodwar->printf("mapHeight %d", b);
-	Broodwar->printf("Overlord spawn tileposition x: %d", unit->getTilePosition().x()*32);
-	Broodwar->printf("Overlord spawn tileposition y: %d", unit->getTilePosition().y()*32);	
-	Broodwar->printf("Overlord spawn x: %d", unit->getPosition().x());
-	Broodwar->printf("Overlord spawn y: %d", unit->getPosition().y());
+	//int a,b;	
+	//a = Broodwar->mapWidth()*32;
+	//b = Broodwar->mapHeight()*32;
+	//Broodwar->printf("mapWidth %d", a);
+	//Broodwar->printf("mapHeight %d", b);
+	//Broodwar->printf("Overlord spawn x: %d", unit->getPosition().x());
+	//Broodwar->printf("Overlord spawn y: %d", unit->getPosition().y());
+	
+	Broodwar->printf("Overlord spawn x: %d", unit->getTilePosition().x());
+	Broodwar->printf("Overlord spawn y: %d", unit->getTilePosition().y());
 
 	updateGoal();
 }
 
 void OverlordAgent::updateGoal()
 {
-	//If the overlord dont have a goal
-	if(goal == TilePosition(-1, -1))
-	{
-		BaseAgent* agent = AgentManager::getInstance()->getClosestBase(unit->getTilePosition());
-		if (agent != NULL)
-		{
-			goal = agent->getUnit()->getTilePosition();
-			lastUpdateFrame = Broodwar->getFrameCount();
-		}
-	}
-
+	//if(mOverlordModule != NULL)
+		//mOverlordModule->computeActions(this);
 }
 
 void OverlordAgent::computeActions()
@@ -60,15 +51,16 @@ void OverlordAgent::computeActions()
 			updateGoal();
 		}
 	}
-	if(unit->isUnderAttack())
-	{
-		//goal = TilePosition(-1, -1);
-	}
 
 	PFManager::getInstance()->computeAttackingUnitActions(this, goal, true);
 }
 
-void OverlordAgent::SetPointOfInterest(TilePosition lPointOfInterest)
+void OverlordAgent::SetOverlordModule(OverlordModule* lOverlordModule)
 {
-	goal = lPointOfInterest;
+	mOverlordModule = lOverlordModule;
+}
+
+OverlordModule* OverlordAgent::GetOverlordModule()
+{
+	return mOverlordModule;
 }

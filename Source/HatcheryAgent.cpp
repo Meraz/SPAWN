@@ -58,6 +58,8 @@ void HatcheryAgent::computeActions()
 	if (!unit->isIdle())
 	{
 		//Already doing something
+
+		//ADD CODE HERE BULTEN
 		return;
 	}
 	
@@ -140,4 +142,3 @@ bool HatcheryAgent::checkBuildUnit(UnitType type)
 	}
 	return false;
 }
-
