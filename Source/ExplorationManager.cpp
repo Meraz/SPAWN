@@ -206,90 +206,84 @@ TilePosition ExplorationManager::getNextToExplore(Squad* squad)
 
 TilePosition ExplorationManager::getNextToExplore(UnitAgent* lUnitAgent)
 {
-	try{
-		TilePosition curPos = lUnitAgent->getUnit()->getTilePosition();
-			//squad->getCenter();
-		TilePosition goal = lUnitAgent->getGoal();
-			//squad->getGoal();
+	TilePosition curPos = lUnitAgent->getUnit()->getTilePosition();
+		//squad->getCenter();
+	TilePosition goal = lUnitAgent->getGoal();
+		//squad->getGoal();
 
-		//Special case: No goal set
-		if (goal.x() == -1 || goal.y() == -1)
+	//Special case: No goal set
+	if (goal.x() == -1 || goal.y() == -1)
+	{
+		Region* startRegion = getRegion(curPos); 
+		goal = TilePosition(startRegion->getCenter());
+		return goal;
+	}
+	
+	double dist = curPos.getDistance(goal);
+
+	double acceptDist = 4;
+	//if (squad->isGround())
+	//{
+	//	acceptDist = 6;
+	//}
+
+	if (dist <= acceptDist)
+	{
+		//Squad is close to goal
+
+		//1. Set region to explored
+		setExplored(goal);
+
+		//2. Find new region to explore
+		Region* startRegion = getRegion(goal);
+		Region* bestRegion = startRegion;
+		if (bestRegion != NULL)
 		{
-			Region* startRegion = getRegion(curPos); 
-			goal = TilePosition(startRegion->getCenter());
-			return goal;
-		}
-		
-		double dist = curPos.getDistance(goal);
 
-		double acceptDist = 4;
-		//if (squad->isGround())
-		//{
-		//	acceptDist = 6;
-		//}
+			int bestLastVisitFrame = getLastVisitFrame(bestRegion);
 
-		if (dist <= acceptDist)
-		{
-			//Squad is close to goal
-
-			//1. Set region to explored
-			setExplored(goal);
-
-			//2. Find new region to explore
-			Region* startRegion = getRegion(goal);
-			Region* bestRegion = startRegion;
-			if (bestRegion != NULL)
-			{
-
-				int bestLastVisitFrame = getLastVisitFrame(bestRegion);
-
-				//if (!squad->isAir())
+			//if (!squad->isAir())
+			//{
+			//	//Ground explorers
+				//for(set<Region*>::const_iterator i=startRegion->getReachableRegions().begin();i!=startRegion->getReachableRegions().end();i++)
 				//{
-				//	//Ground explorers
-				//	for(set<Region*>::const_iterator i=startRegion->getReachableRegions().begin();i!=startRegion->getReachableRegions().end();i++)
-				//	{
-				//		int cLastVisitFrame = getLastVisitFrame((*i));
-				//		TilePosition c = TilePosition((*i)->getCenter());
-				//		if (cLastVisitFrame <= bestLastVisitFrame)
-				//	{
-				//			bestLastVisitFrame = cLastVisitFrame;
-				//			bestRegion = (*i);
-				//		}
+				//	int cLastVisitFrame = getLastVisitFrame((*i));
+				//	TilePosition c = TilePosition((*i)->getCenter());
+				//	if (cLastVisitFrame <= bestLastVisitFrame)
+				//{
+				//		bestLastVisitFrame = cLastVisitFrame;
+				//		bestRegion = (*i);
 				//	}
 				//}
-				//else
-				//{
-					//Air explorers
-					double bestDist = 100000;
-					for(set<Region*>::const_iterator i=getRegions().begin();i!=getRegions().end();i++)
+			//}
+			//else
+			//{
+				//Air explorers
+				double bestDist = 100000;
+				for(set<Region*>::const_iterator i=getRegions().begin();i!=getRegions().end();i++)
+				{
+					int cLastVisitFrame = getLastVisitFrame((*i));
+					TilePosition c = TilePosition((*i)->getCenter());
+					double dist = c.getDistance(curPos);
+					if (cLastVisitFrame < bestLastVisitFrame)
 					{
-						int cLastVisitFrame = getLastVisitFrame((*i));
-						TilePosition c = TilePosition((*i)->getCenter());
-						double dist = c.getDistance(curPos);
-						if (cLastVisitFrame < bestLastVisitFrame)
-						{
-							bestLastVisitFrame = cLastVisitFrame;
-							bestRegion = (*i);
-							bestDist = dist;
-						}
-						if (cLastVisitFrame == bestLastVisitFrame && dist < bestDist)
-						{
-							bestLastVisitFrame = cLastVisitFrame;
-							bestRegion = (*i);
-							bestDist = dist;
-						}
+						bestLastVisitFrame = cLastVisitFrame;
+						bestRegion = (*i);
+						bestDist = dist;
 					}
-				//}
+					if (cLastVisitFrame == bestLastVisitFrame && dist < bestDist)
+					{
+						bestLastVisitFrame = cLastVisitFrame;
+						bestRegion = (*i);
+						bestDist = dist;
+					}
+				}
+			//}
 
-				TilePosition newGoal = TilePosition(bestRegion->getCenter());
-				return newGoal;
-				//Broodwar->printf("Explorer: new goal (%d,%d) I am at (%d,%d) agentGoal (%d,%d)", newGoal.x(), newGoal.y(), curPos.x(), curPos.y(), agent->getGoal().x(), agent->getGoal().y());
-			}
+			TilePosition newGoal = TilePosition(bestRegion->getCenter());
+			return newGoal;
+			//Broodwar->printf("Explorer: new goal (%d,%d) I am at (%d,%d) agentGoal (%d,%d)", newGoal.x(), newGoal.y(), curPos.x(), curPos.y(), agent->getGoal().x(), agent->getGoal().y());
 		}
-	}
-	catch(int e)
-	{
-		Broodwar->printf("Test");
 	}
 	return TilePosition(-1, -1);
 }

@@ -38,11 +38,8 @@ void OverlordManager::AddOverlord(OverlordAgent* lOverlord)
 		return;
 	Broodwar->printf("Overlord added in manager");
 	mOverlord.push_back(lOverlord);
-	if(a)
-	{
-		mOverlord.at(mOverlord.size()-1)->SetOverlordModule(new OverlordExplorer());
-		a = !a;
-	}
+	//OverlordExplorer a = OverlordE
+	//mOverlord.at(mOverlord.size()-1)->SetOverlordModule(new OverlordExplorer());
 }
 
 void OverlordManager::AddPointOfInterest(PointOfInterest* lPoint)
@@ -61,9 +58,9 @@ void OverlordManager::AddPointOfInterest(PointOfInterest* lPoint)
 			}
 		}
 	}
-	Broodwar->printf("Point added in manager");
-	Broodwar->printf("Point added at x: %d", lPoint->mUnit->getPosition().x());
-	Broodwar->printf("Point added at y: %d", lPoint->mUnit->getPosition().y());
+	//Broodwar->printf("Point added in manager");
+	//Broodwar->printf("Point added at x: %d", lPoint->mUnit->getPosition().x());
+	//Broodwar->printf("Point added at y: %d", lPoint->mUnit->getPosition().y());
 	mPointOfInterest->push_back(lPoint);
 }
 
@@ -78,7 +75,7 @@ void OverlordManager::UpdateGoal()
 			if(mPointOfInterest->at(i) == 0)
 			{
 				mPointOfInterest->erase(mPointOfInterest->begin()+i);
-				Broodwar->printf("Base removed from manager");
+			//	Broodwar->printf("Base removed from manager");
 			}
 		}
 	}
@@ -88,7 +85,7 @@ void OverlordManager::UpdateGoal()
 		if(mOverlord.at(i)->getSquadID() != -1 || mOverlord.at(i) == 0)
 		{
 			mOverlord.erase(mOverlord.begin()+i);
-			Broodwar->printf("Overlord removed from manager");
+		//	Broodwar->printf("Overlord removed from manager");
 		}
 	}
 
@@ -109,11 +106,24 @@ void OverlordManager::UniHatchery()
 {
 	int lAmountOfOverlords = mOverlord.size();
 	int lUsedOverlords = 0;
+	if(mOverlord.size() >= 1)
+		mOverlord.at(0)->SetOverlordModule(new OverlordExplorer());
+	if(mOverlord.size() >= 2)
+		mOverlord.at(1)->SetOverlordModule(new OverlordExplorer());
+	for(int i = 2; i < mOverlord.size(); i++)
+	{
+		//OverlordMonitorPoints a;// = OverlordMonitorPoints();
+		//a.SetPointOfInterest(mPointOfInterest->at(0));
+		//mOverlord.at(i)->SetOverlordModule();
+	}
 }
 
 void OverlordManager::DuHatchery()
 {
-
+	/*
+		Remove pointer
+		
+	*/
 }
 
 void OverlordManager::TriHatchery()
@@ -123,7 +133,7 @@ void OverlordManager::TriHatchery()
 
 void OverlordManager::MultipleHatchery()
 {
-
+	
 }
 
 void OverlordManager::computeActions()

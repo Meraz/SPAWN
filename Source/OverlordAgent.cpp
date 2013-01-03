@@ -13,15 +13,16 @@ OverlordAgent::OverlordAgent(Unit* mUnit)
 	type = unit->getType();
 	unitID = unit->getID();
 	agentType = "OverlordAgent";
-	Broodwar->printf("OverlordAgent created (%s)", unit->getType().getName().c_str());
-	mOverlordModule = NULL;
+	//Broodwar->printf("OverlordAgent created (%s)", unit->getType().getName().c_str());
+	mHasModule = false;
 	
 	lastUpdateFrame = Broodwar->getFrameCount();
-	
-	//srand(time(NULL));
-	//goal = TilePosition(rand(), rand());
-	goal = TilePosition(-1,-1);
 
+	mOverlordModule = NULL;
+
+	//srand(time(NULL));
+	goal = TilePosition(-1,-1);
+	goal = Broodwar->self()->getStartLocation();
 	//int a,b;	
 	//a = Broodwar->mapWidth()*32;
 	//b = Broodwar->mapHeight()*32;
@@ -30,16 +31,16 @@ OverlordAgent::OverlordAgent(Unit* mUnit)
 	//Broodwar->printf("Overlord spawn x: %d", unit->getPosition().x());
 	//Broodwar->printf("Overlord spawn y: %d", unit->getPosition().y());
 	
-	Broodwar->printf("Overlord spawn x: %d", unit->getTilePosition().x());
-	Broodwar->printf("Overlord spawn y: %d", unit->getTilePosition().y());
+	//Broodwar->printf("Overlord spawn x: %d", unit->getTilePosition().x());
+	//Broodwar->printf("Overlord spawn y: %d", unit->getTilePosition().y());
 
 	updateGoal();
 }
 
 void OverlordAgent::updateGoal()
 {
-	//if(mOverlordModule != NULL)
-		//mOverlordModule->computeActions(this);
+	if(mOverlordModule != NULL)
+		mOverlordModule->computeActions(this);
 }
 
 void OverlordAgent::computeActions()
@@ -57,6 +58,7 @@ void OverlordAgent::computeActions()
 
 void OverlordAgent::SetOverlordModule(OverlordModule* lOverlordModule)
 {
+	delete mOverlordModule;
 	mOverlordModule = lOverlordModule;
 }
 

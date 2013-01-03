@@ -6,6 +6,7 @@
 #include <vector>
 #include "OverlordAgent.h"
 #include "OverlordExplorer.h"
+#include "OverlordMonitorPoints.h"
 
 using namespace BWAPI;
 using namespace std;

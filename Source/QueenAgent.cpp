@@ -29,15 +29,21 @@ void QueenAgent::Spell_Spawn_Broodling()
 			//Enemy seen
 			if ((*i)->exists())
 			{
-				if((*i)->getType() == UnitTypes::Terran_Siege_Tank_Tank_Mode || (*i)->getType() == UnitTypes::Terran_Siege_Tank_Siege_Mode)
+				if(unit->getDistance((*i)) < 9*32)
 				{
-					unit->useTech(TechTypes::Spawn_Broodlings, (*i));	
-					break;
-				}
-				if((*i)->getType().isOrganic())
-				{
-					unit->useTech(TechTypes::Spawn_Broodlings, (*i));
-					break;
+					if( (*i)->getType() == UnitTypes::Terran_Siege_Tank_Tank_Mode ||
+						(*i)->getType() == UnitTypes::Terran_Siege_Tank_Siege_Mode ||
+						(*i)->getType() == UnitTypes::Protoss_Dark_Templar ||
+						(*i)->getType() == UnitTypes::Protoss_High_Templar)
+					{
+						unit->useTech(TechTypes::Spawn_Broodlings, (*i));	
+						return;
+					}
+					if((*i)->getType().isOrganic())
+					{
+						unit->useTech(TechTypes::Spawn_Broodlings, (*i));
+						return;
+					}
 				}
 			}
 		}

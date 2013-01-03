@@ -22,6 +22,7 @@ private:
 	int lastUpdateFrame;
 	OverlordModule* mOverlordModule;
 	void updateGoal();
+	bool mHasModule;
 
 
 public:
