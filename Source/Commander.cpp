@@ -136,11 +136,29 @@ void Commander::computeActions()
 		//Check if there are units we need to repair.
 		checkRepairUnits();
 	}
-
+	ShallAssist();
 	//Check for units not belonging to a squad
 	checkNoSquadUnits();
 }
+void Commander::ShallAssist()
+{
+	vector<BaseAgent*> agents = AgentManager::getInstance()->getAgents();
+	for(int i = 0; i < agents.size(); i++)
+	{
+		if(agents.at(i)->isBuilding())
+		{
+			if(agents.at(i)->isUnderAttack())
+			{
+				for(int j =0; j< squads.size(); j++)
+				{
+					if(squads.at(j)->isDefensive())
+						squads.at(j)->assist(agents.at(i)->getUnit()->getTilePosition());
+				}
+			}
+		}
+	}
 
+}
 bool Commander::shallEngage()
 {
 	TilePosition closeEnemy = getClosestEnemyBuilding(Broodwar->self()->getStartLocation());

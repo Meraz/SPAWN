@@ -25,18 +25,30 @@ void RefineryAgent::computeActions()
 			return;
 		}
 	}
-
-	if ((int)assignedWorkers.size() <= 3)
+	if(ResourceManager::getInstance()->CompareGasMineralRatio(0.5f))
 	{
-		if (!unit->isBeingConstructed())
+		if ((int)assignedWorkers.size() <= 3)
 		{
-			WorkerAgent* worker = (WorkerAgent*)AgentManager::getInstance()->findClosestFreeWorker(unit->getTilePosition());
-			if (worker != NULL)
+			if (!unit->isBeingConstructed())
 			{
-				worker->getUnit()->rightClick(unit);
-				worker->setState(WorkerAgent::GATHER_GAS);
-				assignedWorkers.push_back(worker);
+				WorkerAgent* worker = (WorkerAgent*)AgentManager::getInstance()->findClosestFreeWorker(unit->getTilePosition());
+				if (worker != NULL)
+				{
+					worker->getUnit()->rightClick(unit);
+					worker->setState(WorkerAgent::GATHER_GAS);
+					assignedWorkers.push_back(worker);
+					
+				}
 			}
 		}
 	}
+	/*else
+	{
+		for(int i = 0; i < (int)assignedWorkers.size(); i++)
+		{
+			WorkerAgent* worker = (WorkerAgent*)assignedWorkers.at(i);
+			worker->reset();
+			assignedWorkers.erase(assignedWorkers.begin() + i);
+		}
+	}*/
 }

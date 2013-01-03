@@ -44,7 +44,7 @@ private:
 public:
 	/** Destructor. */
 	~ResourceManager();
-
+	bool CompareGasMineralRatio(float ratio);
 	/** Returns the instance to the BuildPlanner that is currently used. */
 	static ResourceManager* getInstance();
 

@@ -19,7 +19,19 @@ Priority=3
 ActivePriority=140
 OffenseType=Required
 <setup>
-Unit=Zerg_Zergling: 40
+Unit=Zerg_Zergling: 20
+Unit=Zerg_Overlord:1
+<end>
+<start>
+Type=Defensive
+Move=Ground
+Name=Homeguardspecialsupercommandoelitearmy
+MorphsTo=
+Priority=3
+ActivePriority=140
+OffenseType=Required
+<setup>
+Unit=Zerg_Zergling: 20
 Unit=Zerg_Overlord:1
 <end>
 
@@ -71,6 +83,7 @@ OffenseType=Optional
 <setup>
 Unit=Zerg_Ultralisk:8
 <end>
+
 
 
 

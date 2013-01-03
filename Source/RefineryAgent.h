@@ -2,7 +2,7 @@
 #define __REFINERYAGENT_H__
 
 #include "StructureAgent.h"
-
+#include "ResourceManager.h"
 using namespace BWAPI;
 using namespace std;
 

@@ -438,6 +438,7 @@ bool Squad::isFull()
 		{
 			if (morphs.getID() == UnitTypes::Zerg_Lurker.getID() && agents.at(i)->isOfType(UnitTypes::Zerg_Hydralisk))
 			{
+				agents.at(i)->getUnit()->morph(UnitTypes::Zerg_Lurker);
 				return false;
 			}
 			if (morphs.getID() == UnitTypes::Zerg_Devourer.getID() && agents.at(i)->isOfType(UnitTypes::Zerg_Mutalisk))

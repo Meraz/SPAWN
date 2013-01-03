@@ -72,6 +72,7 @@ void HatcheryAgent::computeActions()
 			return;
 		}
 	}
+	
 	//Build units
 	if (AgentManager::getInstance()->noMiningWorkers() > 6 * (AgentManager::getInstance()->countNoBases() - 1))
 	{

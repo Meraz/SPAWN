@@ -1,11 +1,7 @@
-Metabolic_Boost: 1
 Lurker_Aspect:2
 Zerg_Carapace:3
 Zerg_Carapace:3
 Zerg_Carapace:3
-Zerg_Melee_Attacks: 3
-Zerg_Melee_Attacks: 3
-Zerg_Melee_Attacks: 3
 Zerg_Missile_Attacks:2
 Zerg_Missile_Attacks:2
 Zerg_Missile_Attacks:2
@@ -16,6 +12,7 @@ Dark_Swarm: 2
 Plague:3
 Pneumatized_Carapace: 3
 Grooved_Spines: 1
+
 
 
 

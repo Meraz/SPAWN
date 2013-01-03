@@ -22,6 +22,9 @@ void LurkerAgent::computeActions()
 
 	if(enemyUnitsWithinRange(300))
 	{
-		unit->useTech(TechTypes::Burrowing);
+		
+		unit->burrow();
 	}
+	else
+		unit->unburrow();
 }

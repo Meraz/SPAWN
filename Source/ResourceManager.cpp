@@ -68,7 +68,15 @@ bool ResourceManager::needWorker()
 	}
 	return false;
 }
-
+bool ResourceManager::CompareGasMineralRatio(float lratio)
+{
+		int lMinerals = Broodwar->self()->minerals();
+		int lGas = Broodwar->self()->gas() +1;
+		float temp = lMinerals/lGas;
+		if(temp >= lratio)
+			return true;
+		return false;
+}
 bool ResourceManager::hasResources(UnitType type)
 {
 	int nMinerals = type.mineralPrice();

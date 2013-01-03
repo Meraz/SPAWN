@@ -44,7 +44,7 @@ private:
 	bool isEdgeChokepoint(Chokepoint* choke);
 	TilePosition findDefensePos(Chokepoint* choke);
 	double getChokepointPrio(TilePosition center);
-
+	void ShallAssist();
 	void checkNoSquadUnits();
 	void assignUnit(BaseAgent* agent);
 

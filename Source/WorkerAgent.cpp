@@ -458,7 +458,7 @@ void WorkerAgent::reset()
 		unit->rightClick(base->getUnit()->getPosition());
 	}
 	
-	//Broodwar->printf("[%d] worker reset", unitID);
+	Broodwar->printf("[%d] worker reset", unitID);
 }
 
 bool WorkerAgent::isConstructing(UnitType type)
