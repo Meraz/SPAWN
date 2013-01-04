@@ -21,11 +21,22 @@ void DefilerAgent::computeActions()
 
 	if(unit->isUnderAttack())
 	{
-		unit->useTech(TechTypes::Dark_Swarm);
+		unit->useTech(TechTypes::Dark_Swarm, unit);
 	}
 
-	if(enemyUnitsWithinRange(500))
+	if(enemyUnitsWithinRange(9*32))
 	{
-		unit->useTech(TechTypes::Plague);
+		for(set<Unit*>::const_iterator i=Broodwar->enemy()->getUnits().begin(); i!=Broodwar->enemy()->getUnits().end(); i++)
+		{
+			//Enemy seen
+			if ((*i)->exists())
+			{
+				if(unit->getDistance((*i)) < 9*32)
+				{
+						unit->useTech(TechTypes::Plague, (*i));	
+						return;
+				}
+			}
+		}
 	}
 }

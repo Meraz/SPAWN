@@ -1,13 +1,13 @@
 <start>
 Type=Exploration
 Move=Ground
-Name=Exploration
+Name=ExplorationTeam
 MorphsTo=
-Priority=2
-ActivePriority=50
+Priority=1
+ActivePriority=140
 OffenseType=Optional
 <setup>
-Unit=Zerg_Zergling:2
+Unit=Zerg_Zergling: 2
 <end>
 
 <start>
@@ -19,20 +19,22 @@ Priority=3
 ActivePriority=140
 OffenseType=Required
 <setup>
-Unit=Zerg_Zergling: 20
+Unit=Zerg_Zergling: 8
+Unit=Zerg_Hydralisk: 6
 Unit=Zerg_Overlord:1
 <end>
+
 <start>
 Type=Defensive
 Move=Ground
-Name=Homeguardspecialsupercommandoelitearmy
+Name=Homeguard2
 MorphsTo=
 Priority=3
 ActivePriority=140
 OffenseType=Required
 <setup>
-Unit=Zerg_Zergling: 20
-Unit=Zerg_Overlord:1
+Unit=Zerg_Zergling: 8
+Unit=Zerg_Hydralisk: 6
 <end>
 
 <start>
@@ -41,7 +43,7 @@ Move=Ground
 Name=MainAttackSquad
 MorphsTo=
 Priority=10
-ActivePriority=10
+ActivePriority=30
 OffenseType=Required
 <setup>
 Unit=Zerg_Hydralisk:20
@@ -54,14 +56,15 @@ Move=Ground
 Name=ExtraAttackSquad
 MorphsTo=
 Priority=10
-ActivePriority=10
+ActivePriority=20
 OffenseType=Optional
 <setup>
 Unit=Zerg_Hydralisk:10
+Unit=Zerg_Overlord:1
 <end>
 
 <start>
-Type=Support
+Type=Offensive
 Move=Air
 Name=QueenSquad
 MorphsTo=
@@ -82,7 +85,15 @@ ActivePriority=10
 OffenseType=Optional
 <setup>
 Unit=Zerg_Ultralisk:8
+Unit=Zerg_Overlord:1
 <end>
+
+
+
+
+
+
+
 
 
 

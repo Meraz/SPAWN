@@ -24,11 +24,23 @@ Unit=Zerg_Hydralisk:3
 <end>
 
 <start>
+Type=Defensive
+Move=Air
+Name=HomeAirSquad
+MorphsTo=
+Priority=15
+ActivePriority=20
+OffenseType=Optional
+<setup>
+Unit=Zerg_Mutalisk:12
+<end>
+
+<start>
 Type=Offensive
 Move=Air
 Name=AirSquad
 MorphsTo=
-Priority=15
+Priority=20
 ActivePriority=20
 OffenseType=Optional
 <setup>
@@ -53,29 +65,31 @@ Move=Ground
 Name=LurkerSquad
 MorphsTo=Zerg_Lurker
 Priority=2
-ActivePriority=10
+ActivePriority=20
 OffenseType=Required
 <setup>
 Unit=Zerg_Hydralisk:3
 <end>
+
 <start>
 Type=Offensive
 Move=Ground
 Name=LurkerSquad2
 MorphsTo=Zerg_Lurker
 Priority=3
-ActivePriority=10
+ActivePriority=20
 OffenseType=Required
 <setup>
 Unit=Zerg_Hydralisk:3
 <end>
+
 <start>
 Type=Offensive
 Move=Ground
 Name=LurkerSquad3
 MorphsTo=Zerg_Lurker
 Priority=4
-ActivePriority=10
+ActivePriority=20
 OffenseType=Required
 <setup>
 Unit=Zerg_Hydralisk:3
@@ -87,7 +101,7 @@ Move=Ground
 Name=MainAttackSquad
 MorphsTo=
 Priority=5
-ActivePriority=10
+ActivePriority=15
 OffenseType=Required
 <setup>
 Unit=Zerg_Hydralisk:20
@@ -96,7 +110,7 @@ Unit=Zerg_Overlord:1
 
 
 <start>
-Type=Support
+Type=Offensive
 Move=Ground
 Name=DefilerSquad
 MorphsTo=
@@ -104,8 +118,12 @@ Priority=10
 ActivePriority=10
 OffenseType=Optional
 <setup>
-Unit=Zerg_Defiler:5
+Unit=Zerg_Defiler:3
+Unit=Zerg_Hydralisk:6
 <end>
+
+
+
 
 
 

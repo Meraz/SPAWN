@@ -1,9 +1,9 @@
 Zerg_Spawning_Pool
-Zerg_Hatchery
 Zerg_Extractor
 Zerg_Hydralisk_Den
 Zerg_Hatchery
 Zerg_Evolution_Chamber
+Zerg_Hatchery
 Zerg_Extractor
 Zerg_Hatchery
 Zerg_Extractor
@@ -13,6 +13,10 @@ Zerg_Hatchery
 Zerg_Extractor
 Zerg_Ultralisk_Cavern
 Zerg_Hatchery
+
+
+
+
 
 
 
