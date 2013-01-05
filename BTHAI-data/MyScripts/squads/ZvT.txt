@@ -4,7 +4,7 @@ Move=Ground
 Name=Exploration
 MorphsTo=
 Priority=1
-ActivePriority=1000
+ActivePriority=200
 OffenseType=Optional
 <setup>
 Unit=Zerg_Zergling:2
@@ -16,7 +16,7 @@ Move=Ground
 Name=EarlyDefense
 MorphsTo=Zerg_Lurker
 Priority=2
-ActivePriority=242
+ActivePriority=100
 OffenseType=Optional
 <setup>
 Unit=Zerg_Zergling:10
@@ -53,10 +53,10 @@ Move=Ground
 Name=ExtraLurkerSquad
 MorphsTo=Zerg_Lurker
 Priority=10
-ActivePriority=150
+ActivePriority=25
 OffenseType=Optional
 <setup>
-Unit=Zerg_Hydralisk:9
+Unit=Zerg_Hydralisk:4
 <end>
 
 <start>
@@ -64,35 +64,11 @@ Type=Offensive
 Move=Ground
 Name=LurkerSquad
 MorphsTo=Zerg_Lurker
-Priority=2
-ActivePriority=20
-OffenseType=Required
-<setup>
-Unit=Zerg_Hydralisk:3
-<end>
-
-<start>
-Type=Offensive
-Move=Ground
-Name=LurkerSquad2
-MorphsTo=Zerg_Lurker
 Priority=3
 ActivePriority=20
 OffenseType=Required
 <setup>
-Unit=Zerg_Hydralisk:3
-<end>
-
-<start>
-Type=Offensive
-Move=Ground
-Name=LurkerSquad3
-MorphsTo=Zerg_Lurker
-Priority=4
-ActivePriority=20
-OffenseType=Required
-<setup>
-Unit=Zerg_Hydralisk:3
+Unit=Zerg_Hydralisk:9
 <end>
 
 <start>
@@ -121,6 +97,7 @@ OffenseType=Optional
 Unit=Zerg_Defiler:3
 Unit=Zerg_Hydralisk:6
 <end>
+
 
 
 

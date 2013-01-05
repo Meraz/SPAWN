@@ -558,7 +558,7 @@ void Squad::defend(TilePosition mGoal)
 
 	if (currentState != STATE_DEFEND)
 	{
-		if (currentState == STATE_ASSIST && !isUnderAttack())
+		if (currentState == STATE_ASSIST && !isUnderAttack() && !hasGoal())
 		{
 			currentState = STATE_DEFEND;
 		}
@@ -601,10 +601,11 @@ void Squad::assist(TilePosition mGoal)
 	}
 	else
 	{
-		if (goal.x() == -1)
-		{
+		//if (goal.x() == -1)
+		//{
 			setGoal(mGoal);
-		}
+			Broodwar->printf("Sending to position %d, %d", mGoal.x(), mGoal.y());
+		//}
 	}
 }
 

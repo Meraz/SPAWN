@@ -37,6 +37,9 @@ HatcheryAgent::HatcheryAgent(Unit* mUnit)
 
 void HatcheryAgent::computeActions()
 {
+
+
+
 	if (!hasSentWorkers)
 	{
 		if (!unit->isBeingConstructed())
@@ -128,7 +131,10 @@ void HatcheryAgent::computeActions()
 			}
 		}
 	}
-	
+	if(isOfType(UnitTypes::Zerg_Hive) && !Broodwar->self()->hasResearched(TechTypes::Burrowing))
+		UpgradesPlanner::getInstance()->AddTech(TechTypes::Burrowing);
+		
+		
 
 	//Check for upgrades
 	UpgradesPlanner::getInstance()->checkUpgrade(this);

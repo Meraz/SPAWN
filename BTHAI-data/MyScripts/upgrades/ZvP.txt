@@ -1,16 +1,17 @@
 Zerg_Carapace:2
 Zerg_Carapace:2
+Zerg_Carapace:2
 Zerg_Missile_Attacks:1
 Zerg_Missile_Attacks:1
 Zerg_Melee_Attacks: 3
 Zerg_Melee_Attacks: 3
 Gamete_Meiosis: 1
 Spawn_Broodlings: 3
-Ensnare: 3
 Pneumatized_Carapace: 2
 Grooved_Spines: 2
 Muscular_Augments:2
-Chitinous_Plating
+Chitinous_Plating: 1
+
 
 
 

@@ -32,7 +32,10 @@ UpgradesPlanner* UpgradesPlanner::getInstance()
 	}
 	return instance;
 }
-
+void UpgradesPlanner::AddTech(TechType ltech)
+{
+	techsP1.push_back(ltech);
+}
 bool UpgradesPlanner::checkUpgrade(BaseAgent* agent)
 {
 	if (agent->isAlive() && agent->getUnit()->isIdle())

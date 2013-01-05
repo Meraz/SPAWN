@@ -169,9 +169,32 @@ void WorkerAgent::debug_showGoal()
 		}
 	}
 }
+int WorkerAgent::enemyUnitsWithinRange(int maxRange)
+{
+	int eCnt = 0;
+	int j = 0;
+	for(set<Unit*>::const_iterator i=Broodwar->enemy()->getUnits().begin();i!=Broodwar->enemy()->getUnits().end();i++)
+	{
+		//Enemy seen
+		if ((*i)->exists())
+		{
+			double dist = unit->getDistance((*i));
+			if (dist <= maxRange)
+			{
+				eCnt++;
+			}
+		}
 
+		j++;
+	}
+
+	return eCnt;
+}
 void WorkerAgent::computeActions()
 {
+	
+
+	
 	if (squadID != -1)
 	{
 		//Worker is in a squad
@@ -310,6 +333,16 @@ void WorkerAgent::computeActions()
 			}
 			setState(GATHER_MINERALS);
 		}
+	}
+	if(Broodwar->self()->hasResearched(TechTypes::Burrowing))
+	{
+		if(isUnderAttack())
+		{
+			
+			unit->burrow();
+		}
+		else if(!enemyUnitsWithinRange(300))
+			unit->unburrow();
 	}
 }
 

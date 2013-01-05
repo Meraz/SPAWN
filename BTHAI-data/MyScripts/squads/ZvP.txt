@@ -17,7 +17,7 @@ Name=Homeguard
 MorphsTo=
 Priority=3
 ActivePriority=140
-OffenseType=Required
+OffenseType=Optional
 <setup>
 Unit=Zerg_Zergling: 8
 Unit=Zerg_Hydralisk: 6
@@ -31,7 +31,7 @@ Name=Homeguard2
 MorphsTo=
 Priority=3
 ActivePriority=140
-OffenseType=Required
+OffenseType=Optional
 <setup>
 Unit=Zerg_Zergling: 8
 Unit=Zerg_Hydralisk: 6
@@ -43,7 +43,7 @@ Move=Ground
 Name=MainAttackSquad
 MorphsTo=
 Priority=10
-ActivePriority=30
+ActivePriority=25
 OffenseType=Required
 <setup>
 Unit=Zerg_Hydralisk:20
@@ -60,7 +60,6 @@ ActivePriority=20
 OffenseType=Optional
 <setup>
 Unit=Zerg_Hydralisk:10
-Unit=Zerg_Overlord:1
 <end>
 
 <start>
@@ -72,7 +71,7 @@ Priority=10
 ActivePriority=10
 OffenseType=Optional
 <setup>
-Unit=Zerg_Queen:2
+Unit=Zerg_Ultralisk:3
 <end>
 
 <start>
@@ -80,13 +79,16 @@ Type=Offensive
 Move=Ground
 Name=Heavy
 MorphsTo=
-Priority=10
-ActivePriority=10
+Priority=11
+ActivePriority=15
 OffenseType=Optional
 <setup>
+Unit=Zerg_Queen:2
 Unit=Zerg_Ultralisk:8
 Unit=Zerg_Overlord:1
 <end>
+
+
 
 
 

@@ -35,7 +35,7 @@ private:
 public:
 	/** Destructor. */
 	~UpgradesPlanner();
-
+	void AddTech(TechType ltech);
 	/** Returns the instance to the UpgradesPlanner that is currently used. */
 	static UpgradesPlanner* getInstance();
 

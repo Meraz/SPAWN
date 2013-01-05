@@ -10,17 +10,6 @@ OffenseType=Optional
 <setup>
 Unit=Zerg_Zergling:2
 <end>
-<start>
-Type=Exploration
-Move=Air
-Name=Airexplorer
-MorphsTo=
-Priority=2
-ActivePriority=15
-OffenseType=Optional
-<setup>
-Unit=Zerg_Overlord:1
-<end>
 
 <start>
 Type=Offensive
@@ -95,6 +84,7 @@ OffenseType=Optional
 <setup>
 Unit=Zerg_Scourge:10
 <end>
+
 
 
 
