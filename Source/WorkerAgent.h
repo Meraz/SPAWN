@@ -28,7 +28,7 @@ private:
 	Unit* getEnemyUnit();
 	Unit* getEnemyBuilding();
 	Unit* getEnemyWorker();
-
+	int enemyUnitsWithinRange(int maxRange);
 	int lastFrame;
 
 public:

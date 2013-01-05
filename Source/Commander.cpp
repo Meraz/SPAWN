@@ -94,10 +94,13 @@ void Commander::computeActions()
 			}
 			else
 			{
-				TilePosition defSpot = findChokePoint();
-				if (defSpot.x() != -1)
+				if (!squads.at(i)->hasGoal())
 				{
-					squads.at(i)->defend(defSpot);
+					TilePosition defSpot = findChokePoint();
+					if (defSpot.x() != -1)
+					{
+						squads.at(i)->defend(defSpot);
+					}
 				}
 			}
 		}
@@ -149,11 +152,12 @@ void Commander::ShallAssist()
 		{
 			if(agents.at(i)->isUnderAttack())
 			{
-				for(int j =0; j< squads.size(); j++)
+				/*for(int j =0; j< squads.size(); j++)
 				{
 					if(squads.at(j)->isDefensive())
 						squads.at(j)->assist(agents.at(i)->getUnit()->getTilePosition());
-				}
+				}*/
+				assistBuilding(agents.at(i));
 			}
 		}
 	}
@@ -771,15 +775,16 @@ void Commander::assistBuilding(BaseAgent* building)
 
 	if (target != NULL)
 	{
-		//Broodwar->printf("Assisting building: Targeting enemy %s", target->getType().getName().c_str());
+		Broodwar->printf("Assisting building: Targeting enemy %s", target->getType().getName().c_str());
 		defPos = target->getTilePosition();
 	}
 	
 	for (int i = 0; i < (int)squads.size(); i++)
 	{
 		Squad* sq = squads.at(i);
-		if (sq->isDefensive() || sq->isOffensive() || sq->isSupport())
+		if (sq->isDefensive())
 		{
+			Broodwar->printf("Found defensive squad %d", squads.at(i)->getID());
 			sq->assist(defPos);
 		}
 	}
