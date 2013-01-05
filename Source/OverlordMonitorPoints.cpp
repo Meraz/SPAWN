@@ -19,8 +19,3 @@ void OverlordMonitorPoints::computeActions(UnitAgent* lAgent)
 		lAgent->setGoal(nGoal);
 	}
 }
-
-void OverlordMonitorPoints::SetPointOfInterest(PointOfInterest lPointOfInterest)
-{
-	
-};

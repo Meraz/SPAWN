@@ -13,7 +13,7 @@ public:
 	~UnitModule();
 
 protected:
-	vector<EnemySpotted*>* mEnemySpotted;
+	//vector<EnemySpotted*>* mEnemySpotted;
 	vector<PointOfInterest*>* mPointOfInterest;
 };
 

@@ -10,10 +10,9 @@ using namespace BWAPI;
 
 enum OverlordState
 {
-	UnderAttack,
-	HoveringBase,
-	NoAssignment,
-	Exploring
+	Explore,
+	Monitor,
+	GridSearch
 };
 
 enum PointOfInterestType
@@ -37,17 +36,17 @@ struct PointOfInterest
 		mPosition = lUnit->getPosition();
 	};	
 };
+//
+//struct EnemySpotted
+//{
+//	UINT time;					//Save when last spotted
+//	PointOfInterest* mPoint;
+//};
 
-struct EnemySpotted
-{
-	UINT time;					//Save when last spotted
-	PointOfInterest* mPoint;
-};
-
-struct BeingAttacked
-{
-	UINT time;					//Save when last spotted
-	PointOfInterest* mPoint;
-};
+//struct BeingAttacked
+//{
+//	UINT time;					//Save when last spotted
+//	PointOfInterest* mPoint;
+//};
 
 #endif

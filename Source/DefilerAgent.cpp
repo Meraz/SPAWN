@@ -26,11 +26,13 @@ void DefilerAgent::computeActions()
 
 	if(enemyUnitsWithinRange(9*32))
 	{
+		Unit* lUnit = 0;
 		for(set<Unit*>::const_iterator i=Broodwar->enemy()->getUnits().begin(); i!=Broodwar->enemy()->getUnits().end(); i++)
 		{
 			//Enemy seen
 			if ((*i)->exists())
 			{
+				if(lUnit)
 				if(unit->getDistance((*i)) < 9*32)
 				{
 						unit->useTech(TechTypes::Plague, (*i));	

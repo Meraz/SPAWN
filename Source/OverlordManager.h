@@ -39,10 +39,9 @@ private:
 	void MultipleHatchery();
 
 	vector<OverlordAgent*> mOverlord;
-	vector<EnemySpotted*>* mEnemySpotted;
+	//vector<EnemySpotted*>* mEnemySpotted;
 	vector<PointOfInterest*>* mPointOfInterest;
 	unsigned int mMapSizeX, mMapSizeY;
-	bool mNewBasesSinceLast;
 	int lastCallFrame;
 
 protected:

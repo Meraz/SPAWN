@@ -44,8 +44,10 @@ void PFManager::computeAttackingUnitActions(BaseAgent* agent, TilePosition goal,
 {
 	Unit* unit = agent->getUnit();
 
+
 	if (!defensive || !forceMove)
 	{
+
 		//if (agent->getUnit()->isStartingAttack()) return;
 		if (agent->getUnit()->isAttacking()) return;
 		if (agent->getUnit()->isSieged()) return;

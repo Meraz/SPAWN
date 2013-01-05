@@ -2,10 +2,6 @@
 #include "PFManager.h"
 #include "Commander.h"
 #include "AgentManager.h"
-//Added by Bulten
-#include <stdlib.h>
-#include <time.h>
-
 
 OverlordAgent::OverlordAgent(Unit* mUnit)
 {
@@ -14,55 +10,40 @@ OverlordAgent::OverlordAgent(Unit* mUnit)
 	unitID = unit->getID();
 	agentType = "OverlordAgent";
 	//Broodwar->printf("OverlordAgent created (%s)", unit->getType().getName().c_str());
-	mHasModule = false;
 	
 	lastUpdateFrame = Broodwar->getFrameCount();
 
-	mOverlordModule = NULL;
+	mOverlordModule = vector<OverlordModule*>();
+	mOverlordModule.push_back(new OverlordExplorer());
+	mOverlordModule.push_back(new OverlordMonitorPoints());
+	mOverlordModule.push_back(new OverlordGridSearch());
+	mCurrentModule = 0;
 
-	//srand(time(NULL));
 	goal = TilePosition(-1,-1);
 	goal = Broodwar->self()->getStartLocation();
-	//int a,b;	
-	//a = Broodwar->mapWidth()*32;
-	//b = Broodwar->mapHeight()*32;
-	//Broodwar->printf("mapWidth %d", a);
-	//Broodwar->printf("mapHeight %d", b);
-	//Broodwar->printf("Overlord spawn x: %d", unit->getPosition().x());
-	//Broodwar->printf("Overlord spawn y: %d", unit->getPosition().y());
-	
-	//Broodwar->printf("Overlord spawn x: %d", unit->getTilePosition().x());
-	//Broodwar->printf("Overlord spawn y: %d", unit->getTilePosition().y());
 
 	updateGoal();
 }
 
 void OverlordAgent::updateGoal()
 {
-	if(mOverlordModule != NULL)
-		mOverlordModule->computeActions(this);
+	mOverlordModule.at(mCurrentModule)->computeActions(this);
 }
 
 void OverlordAgent::computeActions()
 {
 	if (squadID == -1)
 	{
-		if (Broodwar->getFrameCount() - lastUpdateFrame > 100)
+		if (Broodwar->getFrameCount() - lastUpdateFrame > 20)
 		{
 			updateGoal();
 		}
 	}
-
-	PFManager::getInstance()->computeAttackingUnitActions(this, goal, true);
+	PFManager::getInstance()->computeAttackingUnitActions(this, goal, true, true);
 }
 
-void OverlordAgent::SetOverlordModule(OverlordModule* lOverlordModule)
+void OverlordAgent::SetOverlordModule(OverlordState lState, void* lParamter)
 {
-	delete mOverlordModule;
-	mOverlordModule = lOverlordModule;
-}
-
-OverlordModule* OverlordAgent::GetOverlordModule()
-{
-	return mOverlordModule;
+	mCurrentModule = (int)lState;
+	mOverlordModule.at(mCurrentModule)->UpdateParamter(lParamter);	
 }

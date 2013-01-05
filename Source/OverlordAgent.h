@@ -5,6 +5,10 @@
 #include "UnitAgent.h"
 #include "OverlordModule.h"
 #include "OverlordStructs.h"
+#include "OverlordExplorer.h"
+#include "OverlordGridSearch.h"
+#include "OverlordMonitorPoints.h"
+#include <vector>
 using namespace BWAPI;
 using namespace std;
 
@@ -20,18 +24,19 @@ class OverlordAgent : public UnitAgent {
 
 private:
 	int lastUpdateFrame;
-	OverlordModule* mOverlordModule;
+	vector<OverlordModule*> mOverlordModule;
+	int mCurrentModule;
+//	OverlordModule mCurrentModule;
 	void updateGoal();
-	bool mHasModule;
-
 
 public:
 	OverlordAgent(Unit* mUnit);
 
 	/** Called each update to issue orders. */
 	void computeActions();
-	void SetOverlordModule(OverlordModule* lOverlordModule);
-	OverlordModule* GetOverlordModule();
+
+	/**				*/
+	void SetOverlordModule(OverlordState lState, void* lParamter);
 	
 };
 

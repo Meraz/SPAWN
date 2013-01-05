@@ -4,14 +4,11 @@ OverlordManager* OverlordManager::instance = NULL;
 
 OverlordManager::OverlordManager()
 {
-	a = true;
 	mOverlord = vector<OverlordAgent*>();
-	//mHatchery = vector<HatcheryAgent*>();
 	
-	mEnemySpotted = new vector<EnemySpotted*>();
+	//mEnemySpotted = new vector<EnemySpotted*>();
 	mPointOfInterest = new vector<PointOfInterest*>();
-	mNewBasesSinceLast = false;
-
+	a = false;
 
 	mMapSizeX = Broodwar->mapWidth()*32;
 	mMapSizeY = Broodwar->mapHeight()*32;
@@ -36,10 +33,7 @@ void OverlordManager::AddOverlord(OverlordAgent* lOverlord)
 	
 	if(lOverlord->getSquadID() != -1)
 		return;
-	Broodwar->printf("Overlord added in manager");
 	mOverlord.push_back(lOverlord);
-	//OverlordExplorer a = OverlordE
-	//mOverlord.at(mOverlord.size()-1)->SetOverlordModule(new OverlordExplorer());
 }
 
 void OverlordManager::AddPointOfInterest(PointOfInterest* lPoint)
@@ -66,6 +60,7 @@ void OverlordManager::AddPointOfInterest(PointOfInterest* lPoint)
 
 void OverlordManager::UpdateGoal()
 {
+	//Broodwar->printf("UpdateGoal");
 	int lAmountOfBases = 0;
 	for(int i = 0; i < mPointOfInterest->size(); i++)
 	{
@@ -89,41 +84,45 @@ void OverlordManager::UpdateGoal()
 		}
 	}
 
-
+	//Broodwar->printf("Before bases");
 	if(lAmountOfBases == 0)
 		return;
 	if(lAmountOfBases == 1)
 		UniHatchery();
-	if(lAmountOfBases == 2)
-		DuHatchery();
-	if(lAmountOfBases == 3)
-		TriHatchery();
-	if(lAmountOfBases > 3)
-		MultipleHatchery();
+	//if(lAmountOfBases == 2)
+	//	DuHatchery();
+	//if(lAmountOfBases == 3)
+	//	TriHatchery();
+	//if(lAmountOfBases > 3)
+	//	MultipleHatchery();
 }
 
 void OverlordManager::UniHatchery()
 {
-	int lAmountOfOverlords = mOverlord.size();
-	int lUsedOverlords = 0;
+	if(a)
+		return;
 	if(mOverlord.size() >= 1)
-		mOverlord.at(0)->SetOverlordModule(new OverlordExplorer());
-	if(mOverlord.size() >= 2)
-		mOverlord.at(1)->SetOverlordModule(new OverlordExplorer());
-	for(int i = 2; i < mOverlord.size(); i++)
 	{
-		//OverlordMonitorPoints a;// = OverlordMonitorPoints();
-		//a.SetPointOfInterest(mPointOfInterest->at(0));
-		//mOverlord.at(i)->SetOverlordModule();
+		mOverlord.at(0)->SetOverlordModule(OverlordState::Explore, (void*)0);
 	}
+
+	if(mOverlord.size() >= 2)
+	{
+		mOverlord.at(1)->SetOverlordModule(OverlordState::Monitor, (void*)mPointOfInterest->at(0));
+	}
+	for(int i = 2; i < mOverlord.size(); i++)
+	{ 
+		if(i % 2 == 0)
+			mOverlord.at(i)->SetOverlordModule(OverlordState::Explore, (void*)0);
+		else
+			mOverlord.at(i)->SetOverlordModule(OverlordState::GridSearch, (void*)0);
+	}
+	a = true;
 }
 
 void OverlordManager::DuHatchery()
 {
-	/*
-		Remove pointer
-		
-	*/
+
 }
 
 void OverlordManager::TriHatchery()

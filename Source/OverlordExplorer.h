@@ -12,6 +12,11 @@ public:
 	OverlordExplorer();
 	~OverlordExplorer();
 	void computeActions(UnitAgent* lAgent);
+
+private:
+	int mLastAttacked;
+	bool mUnderAttack;
+	int mLastCallFrame;
 };
 
 #endif
