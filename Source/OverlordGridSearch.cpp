@@ -8,8 +8,6 @@ OverlordGridSearch::OverlordGridSearch()
 OverlordGridSearch::OverlordGridSearch(UnitAgent* lAgent)
 {
 	MovementYdirection = 20;
-	xMax = Broodwar->mapWidth();
-	yMax = Broodwar->mapHeight();
 	TilePosition lTopLeft = TilePosition(5,5);
 	TilePosition lBotRight = TilePosition(xMax-5, yMax-5);
 
@@ -23,8 +21,9 @@ OverlordGridSearch::OverlordGridSearch(UnitAgent* lAgent)
 	else
 		mStartCorner = lBotRight;
 	lAgent->setGoal(mStartCorner);
-	Broodwar->printf("Startcorner.x: %d", mStartCorner.x());
-	Broodwar->printf("Startcorner.y: %d", mStartCorner.y());
+	/*Broodwar->printf("Startcorner.x: %d", mStartCorner.x());
+	Broodwar->printf("Startcorner.y: %d", mStartCorner.y());*/
+	//Broodwar->pauseGame();
 
 }
 
@@ -37,17 +36,17 @@ void OverlordGridSearch::computeActions(UnitAgent* lAgent)
 {
 	int a = lAgent->getUnit()->getTilePosition().getDistance(lAgent->getGoal());
 	
-	Broodwar->printf("Pos.x %d ", lAgent->getUnit()->getTilePosition().x());
-	Broodwar->printf("Pos.x %d ", lAgent->getUnit()->getTilePosition().y());
-	Broodwar->printf("Goal.x %d ", lAgent->getGoal().x());
-	Broodwar->printf("Goal.y %d ", lAgent->getGoal().y());
-	Broodwar->printf("Came here. a = %d ", a);
-	Broodwar->pauseGame();
+	//Broodwar->printf("Pos.x %d ", lAgent->getUnit()->getTilePosition().x());
+	//Broodwar->printf("Pos.x %d ", lAgent->getUnit()->getTilePosition().y());
+	//Broodwar->printf("Goal.x %d ", lAgent->getGoal().x());
+	//Broodwar->printf("Goal.y %d ", lAgent->getGoal().y());
+	//Broodwar->printf("Came here. a = %d ", a);
+	//Broodwar->pauseGame();
 
 
 	if(a < 5)
 	{
-		Broodwar->printf("Came here. a = %d ", a);
+		/*Broodwar->printf("Came here. a = %d ", a);*/
 		NextGoal(lAgent);
 	}
 	
@@ -76,13 +75,13 @@ void OverlordGridSearch::NextGoal(UnitAgent* lAgent)
 
     if(lUnit->getTilePosition().x() < 10)
     {
-		nGoal = TilePosition(5, lY);
+		nGoal = TilePosition(xMax-5, lY);
 		//setgoal(Xmax, currentYpos + MovementYDirection);
     }
    
     else if(lUnit->getTilePosition().x() > xMax-10)
     {		
-		nGoal = TilePosition(xMax-5, lY);
+		nGoal = TilePosition(5, lY);
 		//setgoal(0, currentYpos + MovementYDirection);
     }   
 

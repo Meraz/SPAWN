@@ -21,8 +21,6 @@ OverlordAgent::OverlordAgent(Unit* mUnit)
 	mOverlordModule.push_back(new OverlordGridSearch(this));
 	mCurrentModule = 0;
 
-	goal = Broodwar->self()->getStartLocation();
-
 	updateGoal();
 }
 

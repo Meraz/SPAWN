@@ -8,7 +8,7 @@ OverlordManager::OverlordManager()
 	
 	//mEnemySpotted = new vector<EnemySpotted*>();
 	mPointOfInterest = new vector<PointOfInterest*>();
-	a = false;
+	mTotalDeadOverlord = 0;
 
 	mMapSizeX = Broodwar->mapWidth()*32;
 	mMapSizeY = Broodwar->mapHeight()*32;
@@ -101,18 +101,15 @@ void OverlordManager::UniHatchery()
 {
 	if(mOverlord.size() >= 1)
 	{
-		mOverlord.at(0)->SetOverlordModule(OverlordState::Explore, (void*)0);
+		mOverlord.at(0)->SetOverlordModule(OverlordState::GridSearch, (void*)0);
 	}
 	if(mOverlord.size() >= 2)
 	{
-		mOverlord.at(1)->SetOverlordModule(OverlordState::Monitor, (void*)mPointOfInterest->at(0));
+		mOverlord.at(1)->SetOverlordModule(OverlordState::Explore, (void*)mPointOfInterest->at(0));
 	}	
 	for(int i = 2; i < mOverlord.size(); i++)
 	{ 
-		if(i < 4)
-			mOverlord.at(i)->SetOverlordModule(OverlordState::Explore, (void*)0);
-		else
-			mOverlord.at(1)->SetOverlordModule(OverlordState::Monitor, (void*)mPointOfInterest->at(0));
+		mOverlord.at(1)->SetOverlordModule(OverlordState::Monitor, (void*)mPointOfInterest->at(0));
 	}
 }
 

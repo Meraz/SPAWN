@@ -21,7 +21,6 @@ using namespace std;
 class OverlordManager
 {
 public:	
-	bool a;
 	static OverlordManager* getInstance();
 	void computeActions();
 
