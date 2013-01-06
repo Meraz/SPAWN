@@ -1,14 +1,26 @@
 
 <start>
-Type=Exploration
+Type=Defensive
 Move=Ground
-Name=BurrowRush
+Name=GroundDefense
 MorphsTo=
-Priority=2
-ActivePriority=15
+Priority=8
+ActivePriority=10
+OffenseType=Required
+<setup>
+Unit=Zerg_Zergling:20
+<end>
+
+<start>
+Type=Defensive
+Move=Air
+Name=HomeAirSquad
+MorphsTo=
+Priority=8
+ActivePriority=10
 OffenseType=Optional
 <setup>
-Unit=Zerg_Zergling:2
+Unit=Zerg_Mutalisk:12
 <end>
 
 <start>
@@ -35,19 +47,6 @@ OffenseType=Optional
 Unit=Zerg_Mutalisk:12
 <end>
 
-
-<start>
-Type=Defensive
-Move=Ground
-Name=MainAttackSquad
-MorphsTo=
-Priority=8
-ActivePriority=10
-OffenseType=Required
-<setup>
-Unit=Zerg_Zergling:20
-<end>
-
 <start>
 Type=Offensive
 Move=Ground
@@ -61,19 +60,6 @@ Unit=Zerg_Zergling:50
 <end>
 
 <start>
-Type=Exploration
-Move=Air
-Name=ExplorationSquad
-MorphsTo=
-Priority=9
-ActivePriority=150
-OffenseType=Optional
-<setup>
-Unit=Zerg_Mutalisk:1
-<end>
-
-
-<start>
 Type=Offensive
 Move=Air
 Name=ScourgeSuicideSquad
@@ -84,6 +70,7 @@ OffenseType=Optional
 <setup>
 Unit=Zerg_Scourge:10
 <end>
+
 
 
 

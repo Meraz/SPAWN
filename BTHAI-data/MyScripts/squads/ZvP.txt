@@ -1,14 +1,3 @@
-<start>
-Type=Exploration
-Move=Ground
-Name=ExplorationTeam
-MorphsTo=
-Priority=1
-ActivePriority=140
-OffenseType=Optional
-<setup>
-Unit=Zerg_Zergling: 2
-<end>
 
 <start>
 Type=Defensive
@@ -38,6 +27,18 @@ Unit=Zerg_Hydralisk: 6
 <end>
 
 <start>
+Type=Defensive
+Move=Air
+Name=Airguard
+MorphsTo=
+Priority=15
+ActivePriority=20
+OffenseType=Optional
+<setup>
+Unit=Zerg_Mutalisk: 6
+<end>
+
+<start>
 Type=Offensive
 Move=Ground
 Name=MainAttackSquad
@@ -53,25 +54,13 @@ Unit=Zerg_Overlord:1
 <start>
 Type=Offensive
 Move=Ground
-Name=ExtraAttackSquad
-MorphsTo=
-Priority=10
-ActivePriority=20
-OffenseType=Optional
-<setup>
-Unit=Zerg_Hydralisk:10
-<end>
-
-<start>
-Type=Offensive
-Move=Air
 Name=QueenSquad
 MorphsTo=
 Priority=10
 ActivePriority=10
 OffenseType=Optional
 <setup>
-Unit=Zerg_Ultralisk:3
+Unit=Zerg_Ultralisk:6
 <end>
 
 <start>
@@ -85,8 +74,9 @@ OffenseType=Optional
 <setup>
 Unit=Zerg_Queen:2
 Unit=Zerg_Ultralisk:8
-Unit=Zerg_Overlord:1
 <end>
+
+
 
 
 
