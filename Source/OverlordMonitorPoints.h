@@ -13,7 +13,7 @@ public:
 	OverlordMonitorPoints(UnitAgent* lAgent);
 	~OverlordMonitorPoints();
 	void UpdateParamter(void* lParamter);
-	void computeActions();
+	void computeActions(UnitAgent* lAgent);
 
 	void SetPointOfInterest(PointOfInterest lPointOfInterest);
 

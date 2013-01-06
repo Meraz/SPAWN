@@ -32,13 +32,13 @@ void OverlordMonitorPoints::UpdateParamter(void* lParamter)
 	mCurrentGoal = 0;
 }
 
-void OverlordMonitorPoints::computeActions()
+void OverlordMonitorPoints::computeActions(UnitAgent* lAgent)
 {
 	TilePosition nGoal;
 	if(mCurrentGoal == -1)
 		return;	
 
-	if(mAgent->getUnit()->getTilePosition().getDistance(mSurroundingPlaces.at(mCurrentGoal)) < 5)
+	if(lAgent->getUnit()->getTilePosition().getDistance(mSurroundingPlaces.at(mCurrentGoal)) < 5)
 		mCurrentGoal++;
 	if(mCurrentGoal > mSurroundingPlaces.size()-1)
 		mCurrentGoal = 0;
@@ -46,7 +46,7 @@ void OverlordMonitorPoints::computeActions()
 	
 	if (nGoal.x() >= 0)
 	{
-		mAgent->setGoal(nGoal);
+		lAgent->setGoal(nGoal);
 	}
 }
 

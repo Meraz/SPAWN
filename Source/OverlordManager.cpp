@@ -89,12 +89,12 @@ void OverlordManager::UpdateGoal()
 		return;
 	if(lAmountOfBases == 1)
 		UniHatchery();
-	if(lAmountOfBases == 2)
-		DuHatchery();
-	if(lAmountOfBases == 3)
-		TriHatchery();
-	if(lAmountOfBases > 3)
-		TriHatchery();
+	//if(lAmountOfBases == 2)
+	//	DuHatchery();
+	//if(lAmountOfBases == 3)
+	//	TriHatchery();
+	//if(lAmountOfBases > 3)
+	//	MultipleHatchery();
 }
 
 void OverlordManager::UniHatchery()
@@ -109,53 +109,24 @@ void OverlordManager::UniHatchery()
 	}	
 	for(int i = 2; i < mOverlord.size(); i++)
 	{ 
+		Broodwar->printf("i= %d", i);
 		mOverlord.at(i)->SetOverlordModule(OverlordState::Monitor, (void*)mPointOfInterest->at(0));
 	}
 }
 
 void OverlordManager::DuHatchery()
 {
-	if(mOverlord.size() >= 1)
-	{
-		mOverlord.at(0)->SetOverlordModule(OverlordState::GridSearch, (void*)0);
-	}
-	if(mOverlord.size() >= 2)
-	{
-		mOverlord.at(1)->SetOverlordModule(OverlordState::Explore, (void*)0);
-	}	
-	for(int i = 2; i < mOverlord.size(); i++)
-	{ 
-		if(i >= mOverlord.size()/2)
-			mOverlord.at(i)->SetOverlordModule(OverlordState::Monitor, (void*)mPointOfInterest->at(0));
-		else if(i < mOverlord.size()/2)
-			mOverlord.at(i)->SetOverlordModule(OverlordState::Monitor, (void*)mPointOfInterest->at(1));
-	}
+
 }
 
 void OverlordManager::TriHatchery()
 {
-	if(mOverlord.size() >= 1)
-	{
-		mOverlord.at(0)->SetOverlordModule(OverlordState::GridSearch, (void*)0);
-	}
-	if(mOverlord.size() >= 2)
-	{
-		mOverlord.at(1)->SetOverlordModule(OverlordState::Explore, (void*)0);
-	}	
-	for(int i = 2; i < mOverlord.size(); i++)
-	{ 
-		if(i >= mOverlord.size()/3)
-			mOverlord.at(i)->SetOverlordModule(OverlordState::Monitor, (void*)mPointOfInterest->at(0));
-		else if(i < mOverlord.size()/3 && i >= mOverlord.size()/2)
-			mOverlord.at(i)->SetOverlordModule(OverlordState::Monitor, (void*)mPointOfInterest->at(1));
-		else if(i < mOverlord.size()/3)
-			mOverlord.at(i)->SetOverlordModule(OverlordState::Monitor, (void*)mPointOfInterest->at(1));
-	}
+
 }
 
 void OverlordManager::MultipleHatchery()
 {
-
+	
 }
 
 void OverlordManager::computeActions()

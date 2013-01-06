@@ -11,6 +11,7 @@ OverlordModule::OverlordModule(UnitAgent* lAgent)
 	mUnderAttack = false;
 	xMax = Broodwar->mapWidth();
 	yMax = Broodwar->mapHeight();
+	mAgent->setGoal(Broodwar->self()->getStartLocation());
 }
 
 OverlordModule::~OverlordModule()
@@ -31,6 +32,20 @@ void OverlordModule::computeActions()
 
 bool OverlordModule::UnderAttack()
 {
+	int cFrame = Broodwar->getFrameCount();
+	TilePosition nGoal;
+	if(mUnderAttack == true)
+	{
+		mLastAttacked += cFrame;
+
+		if(mLastAttacked > 70000)
+		{
+		//	Broodwar->printf("Not attacked anymoar");
+			mUnderAttack = false;
+			return false;
+		}
+	}	
+	
 	if(mUnderAttack == false && mAgent->getUnit()->isUnderAttack())
 	{
 		for(set<Unit*>::const_iterator i=Broodwar->enemy()->getUnits().begin(); i!=Broodwar->enemy()->getUnits().end(); i++)
@@ -57,19 +72,12 @@ bool OverlordModule::UnderAttack()
 				
 					//Stop overlord and set new goal
 					mAgent->getUnit()->stop();
-					mAgent->setGoal(Broodwar->self()->getStartLocation());
-					//mUnderAttack = true;
+					mAgent->setGoal(TilePosition(x,y));
+					mUnderAttack = true;
 					return true;
 				}
 			}
 		}
 	}
-	return false;
-}
-
-bool OverlordModule::StayHome()
-{
-	if(mAgent->getUnit()->getHitPoints() < mAgent->getUnit()->getInitialHitPoints())
-		return true;
 	return false;
 }
