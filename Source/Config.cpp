@@ -10,7 +10,7 @@ Config::Config()
 {
 	version = "";
 	scriptPath = "bwapi-data\\AI\\BTHAI-data\\";
-	botName = "ReaverDrop";
+	botName = "BTHAI";
 	init = false;
 
 	readConfigFile();
