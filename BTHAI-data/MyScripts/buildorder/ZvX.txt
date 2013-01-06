@@ -1,0 +1,17 @@
+Zerg_Spawning_Pool
+Zerg_Hatchery
+Zerg_Extractor
+Zerg_Spire
+Zerg_Evolution_Chamber
+Zerg_Extractor
+Zerg_Hatchery
+Zerg_Queens_Nest
+Zerg_Greater_Spire
+Zerg_Hatchery
+Zerg_Extractor
+Zerg_Hatchery
+Zerg_Hatchery
+Zerg_Hatchery
+
+
+
