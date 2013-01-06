@@ -1,15 +1,10 @@
 #include "OverlordGridSearch.h"
 
-OverlordGridSearch::OverlordGridSearch()
-{
-	
-}
-
-OverlordGridSearch::OverlordGridSearch(UnitAgent* lAgent)
+OverlordGridSearch::OverlordGridSearch(UnitAgent* lAgent) : OverlordModule(lAgent)
 {
 	MovementYdirection = 20;
-	TilePosition lTopLeft = TilePosition(5,5);
-	TilePosition lBotRight = TilePosition(xMax-5, yMax-5);
+	TilePosition lTopLeft = TilePosition(5,10);
+	TilePosition lBotRight = TilePosition(xMax-5, yMax-10);
 
 	int lDistanceTopLeft = lAgent->getUnit()->getTilePosition().getDistance(lTopLeft);
 	int lDistanceRightBot = lAgent->getUnit()->getTilePosition().getDistance(lBotRight);
@@ -20,11 +15,6 @@ OverlordGridSearch::OverlordGridSearch(UnitAgent* lAgent)
 	}
 	else
 		mStartCorner = lBotRight;
-	lAgent->setGoal(mStartCorner);
-	/*Broodwar->printf("Startcorner.x: %d", mStartCorner.x());
-	Broodwar->printf("Startcorner.y: %d", mStartCorner.y());*/
-	//Broodwar->pauseGame();
-
 }
 
 OverlordGridSearch::~OverlordGridSearch()
@@ -32,9 +22,14 @@ OverlordGridSearch::~OverlordGridSearch()
 
 }
 
-void OverlordGridSearch::computeActions(UnitAgent* lAgent)
+void OverlordGridSearch::UpdateParamter(void* lParamter)
 {
-	int a = lAgent->getUnit()->getTilePosition().getDistance(lAgent->getGoal());
+	mAgent->setGoal(mStartCorner);
+}
+
+void OverlordGridSearch::computeActions()
+{
+	int a = mAgent->getUnit()->getTilePosition().getDistance(mAgent->getGoal());
 	
 	//Broodwar->printf("Pos.x %d ", lAgent->getUnit()->getTilePosition().x());
 	//Broodwar->printf("Pos.x %d ", lAgent->getUnit()->getTilePosition().y());
@@ -46,40 +41,32 @@ void OverlordGridSearch::computeActions(UnitAgent* lAgent)
 
 	if(a < 5)
 	{
-		/*Broodwar->printf("Came here. a = %d ", a);*/
-		NextGoal(lAgent);
+		NextGoal();
 	}
-	
-	//if (nGoal.x() >= 0)
-	//{
-	//	lAgent->setGoal(nGoal);
-	//}
-
-
-
 }
  
-void OverlordGridSearch::NextGoal(UnitAgent* lAgent)
+void OverlordGridSearch::NextGoal()
 {
 	TilePosition nGoal;
+	Unit* lUnit = mAgent->getUnit();
+	TilePosition lPos = lUnit->getTilePosition();
+	
 
-	Unit* lUnit = lAgent->getUnit();
 	if(lUnit->getTilePosition().y() <  10 || lUnit->getTilePosition().y() > yMax-10)
 		MovementYdirection *= -1;
    
 	int lY = lUnit->getTilePosition().y() + MovementYdirection;
-	if(lY < 5)
-		lY = 5;
-	if(lY > yMax-5)
-		lY = yMax-5;
+	if(lY < 10)
+		lY = 10;
+	if(lY > yMax-10)
+		lY = yMax-10;
 
-    if(lUnit->getTilePosition().x() < 10)
+    if(lUnit->getTilePosition().x() < 5)
     {
 		nGoal = TilePosition(xMax-5, lY);
 		//setgoal(Xmax, currentYpos + MovementYDirection);
-    }
-   
-    else if(lUnit->getTilePosition().x() > xMax-10)
+    }   
+    else if(lUnit->getTilePosition().x() > xMax-5)
     {		
 		nGoal = TilePosition(5, lY);
 		//setgoal(0, currentYpos + MovementYDirection);
@@ -87,6 +74,6 @@ void OverlordGridSearch::NextGoal(UnitAgent* lAgent)
 
 	if (nGoal.x() >= 0)
 	{
-		lAgent->setGoal(nGoal);
+		mAgent->setGoal(nGoal);
 	}
 }

@@ -12,12 +12,12 @@ OverlordAgent::OverlordAgent(Unit* mUnit)
 	//Broodwar->printf("OverlordAgent created (%s)", unit->getType().getName().c_str());
 	
 	lastUpdateFrame = Broodwar->getFrameCount();
+
 	goal = TilePosition(-1,-1);
-	
 
 	mOverlordModule = vector<OverlordModule*>();
-	mOverlordModule.push_back(new OverlordExplorer());
-	mOverlordModule.push_back(new OverlordMonitorPoints());
+	mOverlordModule.push_back(new OverlordExplorer(this));
+	mOverlordModule.push_back(new OverlordMonitorPoints(this));
 	mOverlordModule.push_back(new OverlordGridSearch(this));
 	mCurrentModule = 0;
 
@@ -26,7 +26,7 @@ OverlordAgent::OverlordAgent(Unit* mUnit)
 
 void OverlordAgent::updateGoal()
 {
-	mOverlordModule.at(mCurrentModule)->computeActions(this);
+	mOverlordModule.at(mCurrentModule)->computeActions();
 }
 
 void OverlordAgent::computeActions()

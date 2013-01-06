@@ -9,9 +9,9 @@ using namespace BWAPI;
 class OverlordExplorer : public OverlordModule
 {
 public:
-	OverlordExplorer();
+	OverlordExplorer(UnitAgent* lAgent);
 	~OverlordExplorer();
-	void computeActions(UnitAgent* lAgent);
+	void computeActions();
 
 private:
 

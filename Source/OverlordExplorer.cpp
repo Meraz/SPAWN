@@ -1,6 +1,6 @@
 #include "OverlordExplorer.h"
 
-OverlordExplorer::OverlordExplorer()
+OverlordExplorer::OverlordExplorer(UnitAgent* lAgent): OverlordModule(lAgent)
 {
 }
 
@@ -9,19 +9,18 @@ OverlordExplorer::~OverlordExplorer()
 
 }
 
-void OverlordExplorer::computeActions(UnitAgent* lAgent)
+void OverlordExplorer::computeActions()
 {
 //	Broodwar->printf("Overlord Exploring");
 
 	TilePosition nGoal;
 	
-	if(UnderAttack(lAgent) == false)
-	//if(true)
+	if(UnderAttack() == false)
 	{
-		nGoal = ExplorationManager::getInstance()->getNextToExplore(lAgent);
+		nGoal = ExplorationManager::getInstance()->getNextToExplore(mAgent);
 		if (nGoal.x() >= 0)
 		{
-			lAgent->setGoal(nGoal);
+			mAgent->setGoal(nGoal);
 		}
 	}
 }

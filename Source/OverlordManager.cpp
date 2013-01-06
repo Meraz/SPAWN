@@ -105,11 +105,12 @@ void OverlordManager::UniHatchery()
 	}
 	if(mOverlord.size() >= 2)
 	{
-		mOverlord.at(1)->SetOverlordModule(OverlordState::Explore, (void*)mPointOfInterest->at(0));
+		mOverlord.at(1)->SetOverlordModule(OverlordState::Explore, (void*)0);
 	}	
 	for(int i = 2; i < mOverlord.size(); i++)
 	{ 
-		mOverlord.at(1)->SetOverlordModule(OverlordState::Monitor, (void*)mPointOfInterest->at(0));
+		Broodwar->printf("i= %d", i);
+		mOverlord.at(i)->SetOverlordModule(OverlordState::Monitor, (void*)mPointOfInterest->at(0));
 	}
 }
 

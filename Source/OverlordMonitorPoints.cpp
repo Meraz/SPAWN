@@ -1,6 +1,6 @@
 #include "OverlordMonitorPoints.h"
 
-OverlordMonitorPoints::OverlordMonitorPoints()
+OverlordMonitorPoints::OverlordMonitorPoints(UnitAgent* lAgent) : OverlordModule(lAgent)
 {
 	mPointOfInterest = NULL;
 	mCurrentGoal = -1;

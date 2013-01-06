@@ -10,7 +10,7 @@ using namespace BWAPI;
 class OverlordMonitorPoints : public OverlordModule
 {
 public:
-	OverlordMonitorPoints();
+	OverlordMonitorPoints(UnitAgent* lAgent);
 	~OverlordMonitorPoints();
 	void UpdateParamter(void* lParamter);
 	void computeActions(UnitAgent* lAgent);

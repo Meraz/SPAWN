@@ -11,16 +11,15 @@ class OverlordGridSearch : public OverlordModule
 private:
 	TilePosition mStartCorner;
 
-	void NextGoal(UnitAgent* lAgent);
+	void NextGoal();
 	int MovementYdirection; //swap when we reach the top or bot
 
 
 public:
-	OverlordGridSearch();
 	OverlordGridSearch(UnitAgent* lAgent);
 	~OverlordGridSearch();
-
-	void computeActions(UnitAgent* lAgent);
+	void UpdateParamter(void* lParamter);
+	void computeActions();
 };
 
 #endif

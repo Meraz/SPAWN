@@ -2,9 +2,16 @@
 
 OverlordModule::OverlordModule()
 {
+
+}
+
+OverlordModule::OverlordModule(UnitAgent* lAgent)
+{
+	mAgent = lAgent;
 	mUnderAttack = false;
 	xMax = Broodwar->mapWidth();
 	yMax = Broodwar->mapHeight();
+	mAgent->setGoal(Broodwar->self()->getStartLocation());
 }
 
 OverlordModule::~OverlordModule()
@@ -18,12 +25,12 @@ void OverlordModule::UpdateParamter(void* lParamter)
 }
 
 
-void OverlordModule::computeActions(UnitAgent* lAgent)
+void OverlordModule::computeActions()
 {
 
 }
 
-bool OverlordModule::UnderAttack(UnitAgent* lAgent)
+bool OverlordModule::UnderAttack()
 {
 	int cFrame = Broodwar->getFrameCount();
 	TilePosition nGoal;
@@ -39,16 +46,16 @@ bool OverlordModule::UnderAttack(UnitAgent* lAgent)
 		}
 	}	
 	
-	if(mUnderAttack == false && lAgent->getUnit()->isUnderAttack())
+	if(mUnderAttack == false && mAgent->getUnit()->isUnderAttack())
 	{
 		for(set<Unit*>::const_iterator i=Broodwar->enemy()->getUnits().begin(); i!=Broodwar->enemy()->getUnits().end(); i++)
 		{
 			if ((*i)->exists())
 			{
-				if(lAgent->getUnit()->getDistance((*i)) < 9*32)
+				if(mAgent->getUnit()->getDistance((*i)) < 9*32)
 				{					
 					mLastAttacked = 0;
-					TilePosition a = lAgent->getUnit()->getTilePosition();
+					TilePosition a = mAgent->getUnit()->getTilePosition();
 					TilePosition b = (*i)->getTilePosition();
 					//Calculate escape vector director
 					b = a - b;
@@ -64,8 +71,8 @@ bool OverlordModule::UnderAttack(UnitAgent* lAgent)
 					if(y > yMax  )	{ y = yMax;}
 				
 					//Stop overlord and set new goal
-					lAgent->getUnit()->stop();
-					lAgent->setGoal(TilePosition(x,y));
+					mAgent->getUnit()->stop();
+					mAgent->setGoal(TilePosition(x,y));
 					mUnderAttack = true;
 					return true;
 				}
