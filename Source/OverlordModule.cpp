@@ -3,6 +3,8 @@
 OverlordModule::OverlordModule()
 {
 	mUnderAttack = false;
+	xMax = Broodwar->mapWidth();
+	yMax = Broodwar->mapHeight();
 }
 
 OverlordModule::~OverlordModule()
@@ -48,12 +50,22 @@ bool OverlordModule::UnderAttack(UnitAgent* lAgent)
 					mLastAttacked = 0;
 					TilePosition a = lAgent->getUnit()->getTilePosition();
 					TilePosition b = (*i)->getTilePosition();
+					//Calculate escape vector director
 					b = a - b;
 					a = a + b;
-					TilePosition c = TilePosition((a.x() + (b.x()) * 10), (a.y() + (b.y()) * 10));
-					nGoal = c;
+					//Increase that by 5
+					int x = (a.x() + (b.x()) * 5);
+					int y = (a.y() + (b.y()) * 5);
+
+					//Make sure coords does not exceed mapsize
+					if(x < 0 )		{ x = 0;}
+					if(x > xMax )	{ x = xMax;}
+					if(y < 0 )		{ y = 0;}
+					if(y > yMax  )	{ y = yMax;}
+				
+					//Stop overlord and set new goal
 					lAgent->getUnit()->stop();
-					lAgent->setGoal(nGoal);
+					lAgent->setGoal(TilePosition(x,y));
 					mUnderAttack = true;
 					return true;
 				}

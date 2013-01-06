@@ -40,7 +40,7 @@ void OverlordMonitorPoints::computeActions(UnitAgent* lAgent)
 
 	if(lAgent->getUnit()->getTilePosition().getDistance(mSurroundingPlaces.at(mCurrentGoal)) < 5)
 		mCurrentGoal++;
-	if(mCurrentGoal > mSurroundingPlaces.size())
+	if(mCurrentGoal > mSurroundingPlaces.size()-1)
 		mCurrentGoal = 0;
 	nGoal = mSurroundingPlaces.at(mCurrentGoal);
 	

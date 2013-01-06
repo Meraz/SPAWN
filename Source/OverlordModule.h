@@ -19,6 +19,8 @@ public:
 	virtual void computeActions(UnitAgent* lAgent);
 
 protected:
+	int xMax;
+	int yMax;
 	bool mUnderAttack;
 	bool UnderAttack(UnitAgent* lAgent);
 	int mLastAttacked;

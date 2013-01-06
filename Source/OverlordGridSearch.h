@@ -10,8 +10,7 @@ class OverlordGridSearch : public OverlordModule
 {
 private:
 	TilePosition mStartCorner;
-	int xMax;
-	int yMax;
+
 	void NextGoal(UnitAgent* lAgent);
 	int MovementYdirection; //swap when we reach the top or bot
 
