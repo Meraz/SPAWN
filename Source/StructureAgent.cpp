@@ -240,10 +240,20 @@ void StructureAgent::printInfo()
 
 void StructureAgent::sendWorkers()
 {
-	//We have constructed a new base. Make some workers move here.
-	int noWorkers = AgentManager::getInstance()->getNoWorkers();
-	int toSend = noWorkers / (AgentManager::getInstance()->countNoBases() + 1);
-	int hasSent = 0;
+	int real_nr_of_bases = AgentManager::getInstance()->countNoUnits(UnitTypes::Zerg_Hatchery) + AgentManager::getInstance()->countNoUnits(UnitTypes::Zerg_Lair) + AgentManager::getInstance()->countNoUnits(UnitTypes::Zerg_Hive);
+	int toSend;
+	int hasSent;
+
+	if (real_nr_of_bases%2 == 0) //We have constructed a new base. Make some workers move here.
+	{
+		int noWorkers = AgentManager::getInstance()->getNoWorkers();
+		toSend = noWorkers / (AgentManager::getInstance()->countNoBases() + 1);
+		hasSent = 0;
+	}
+	else
+	{
+		return;
+	}
 
 	//Broodwar->printf("Sending %d/%d workers to new base", toSend, noWorkers);
 	vector<BaseAgent*> agents = AgentManager::getInstance()->getAgents();
