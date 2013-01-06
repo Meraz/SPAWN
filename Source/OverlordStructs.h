@@ -30,6 +30,7 @@ struct PointOfInterest
 	UINT mValue;					//Lower is better.
 	//vector<UnitAgent*> mNearbyUnits;
 	vector<TilePosition*> mSurroundingPosition;
+	PointOfInterest(){};
 	PointOfInterest(Unit* lUnit)
 	{
 		mUnit = lUnit;

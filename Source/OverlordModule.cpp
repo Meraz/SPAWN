@@ -18,14 +18,10 @@ void OverlordModule::UpdateParamter(void* lParamter)
 
 void OverlordModule::computeActions(UnitAgent* lAgent)
 {
-	Broodwar->printf("Hej");
-	if(lAgent->getUnit()->isUnderAttack())
-	{
-		//Do something
-	}
+
 }
 
-bool OverlordModule::UnderAttack()
+bool OverlordModule::UnderAttack(UnitAgent* lAgent)
 {
 	int cFrame = Broodwar->getFrameCount();
 	TilePosition nGoal;
@@ -35,7 +31,8 @@ bool OverlordModule::UnderAttack()
 
 		if(mLastAttacked > 70000)
 		{
-			Broodwar->printf("Not attacked anymoar");
+		//	Broodwar->printf("Not attacked anymoar");
+			mUnderAttack = false;
 			return false;
 		}
 	}	
@@ -53,10 +50,11 @@ bool OverlordModule::UnderAttack()
 					TilePosition b = (*i)->getTilePosition();
 					b = a - b;
 					a = a + b;
-					TilePosition c = TilePosition((a.x() + b.x()) * 10, (a.y() + b.x()) * 10);
+					TilePosition c = TilePosition((a.x() + (b.x()) * 10), (a.y() + (b.y()) * 10));
 					nGoal = c;
 					lAgent->getUnit()->stop();
 					lAgent->setGoal(nGoal);
+					mUnderAttack = true;
 					return true;
 				}
 			}

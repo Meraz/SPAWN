@@ -37,6 +37,8 @@ private:
 	void DuHatchery();
 	void TriHatchery();
 	void MultipleHatchery();
+	void UnderAttack();
+	UINT mTotalDeadOverlord;
 
 	vector<OverlordAgent*> mOverlord;
 	//vector<EnemySpotted*>* mEnemySpotted;

@@ -14,8 +14,7 @@ public:
 	void computeActions(UnitAgent* lAgent);
 
 private:
-	int mLastAttacked;
-	int mLastCallFrame;
+
 };
 
 #endif

@@ -15,7 +15,7 @@ void OverlordExplorer::computeActions(UnitAgent* lAgent)
 
 	TilePosition nGoal;
 	
-	if(UnderAttack() == false)
+	if(UnderAttack(lAgent) == false)
 	{
 		nGoal = ExplorationManager::getInstance()->getNextToExplore(lAgent);
 		if (nGoal.x() >= 0)

@@ -47,7 +47,7 @@ void OverlordManager::AddPointOfInterest(PointOfInterest* lPoint)
 			{
 				//Maco hatchery
 				//So instead increase value of the original point and return
-				mPointOfInterest->at(i)->mValue += 1;	//Modify this number maybe
+				mPointOfInterest->at(i)->mValue += 1;	//Modify this number maybe //Priority is not used at this moment
 				return;		
 			}
 		}
@@ -77,9 +77,12 @@ void OverlordManager::UpdateGoal()
 		if(mOverlord.at(i)->getSquadID() != -1 || mOverlord.at(i) == 0)
 		{
 			mOverlord.erase(mOverlord.begin()+i);
+			mTotalDeadOverlord++;
 		//	Broodwar->printf("Overlord removed from manager");
 		}
 	}
+
+
 
 	//Broodwar->printf("Before bases");
 	if(lAmountOfBases == 0)
@@ -100,7 +103,6 @@ void OverlordManager::UniHatchery()
 	{
 		mOverlord.at(0)->SetOverlordModule(OverlordState::Explore, (void*)0);
 	}
-
 	if(mOverlord.size() >= 2)
 	{
 		mOverlord.at(1)->SetOverlordModule(OverlordState::Monitor, (void*)mPointOfInterest->at(0));

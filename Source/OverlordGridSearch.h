@@ -9,7 +9,12 @@ using namespace BWAPI;
 class OverlordGridSearch : public OverlordModule
 {
 private:
-	Position mStartCorner;
+	TilePosition mStartCorner;
+	int xMax;
+	int yMax;
+	void NextGoal(UnitAgent* lAgent);
+	int MovementYdirection; //swap when we reach the top or bot
+
 
 public:
 	OverlordGridSearch();

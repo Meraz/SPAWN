@@ -12,14 +12,15 @@ OverlordAgent::OverlordAgent(Unit* mUnit)
 	//Broodwar->printf("OverlordAgent created (%s)", unit->getType().getName().c_str());
 	
 	lastUpdateFrame = Broodwar->getFrameCount();
+	goal = TilePosition(-1,-1);
+	
 
 	mOverlordModule = vector<OverlordModule*>();
 	mOverlordModule.push_back(new OverlordExplorer());
 	mOverlordModule.push_back(new OverlordMonitorPoints());
 	mOverlordModule.push_back(new OverlordGridSearch(this));
-	mCurrentModule = 1;
+	mCurrentModule = 0;
 
-	goal = TilePosition(-1,-1);
 	goal = Broodwar->self()->getStartLocation();
 
 	updateGoal();

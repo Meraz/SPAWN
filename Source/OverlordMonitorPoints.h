@@ -3,6 +3,7 @@
 
 #include "OverlordModule.h"
 #include "OverlordStructs.h"
+#include <vector>
 
 using namespace BWAPI;
 
@@ -11,12 +12,15 @@ class OverlordMonitorPoints : public OverlordModule
 public:
 	OverlordMonitorPoints();
 	~OverlordMonitorPoints();
+	void UpdateParamter(void* lParamter);
 	void computeActions(UnitAgent* lAgent);
 
 	void SetPointOfInterest(PointOfInterest lPointOfInterest);
 
 private:
-	//PointOfInterest mPointOfInterest;
+	PointOfInterest* mPointOfInterest;
+	vector<TilePosition> mSurroundingPlaces;
+	int mCurrentGoal;
 };
 
 #endif
