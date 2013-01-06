@@ -152,6 +152,11 @@ void Commander::ShallAssist()
 		{
 			if(agents.at(i)->isUnderAttack())
 			{
+				/*for(int j =0; j< squads.size(); j++)
+				{
+					if(squads.at(j)->isDefensive())
+						squads.at(j)->assist(agents.at(i)->getUnit()->getTilePosition());
+				}*/
 				assistBuilding(agents.at(i));
 			}
 		}
@@ -770,7 +775,7 @@ void Commander::assistBuilding(BaseAgent* building)
 
 	if (target != NULL)
 	{
-		//Broodwar->printf("Assisting building: Targeting enemy %s", target->getType().getName().c_str());
+		Broodwar->printf("Assisting building: Targeting enemy %s", target->getType().getName().c_str());
 		defPos = target->getTilePosition();
 	}
 	
@@ -779,7 +784,7 @@ void Commander::assistBuilding(BaseAgent* building)
 		Squad* sq = squads.at(i);
 		if (sq->isDefensive())
 		{
-			//Broodwar->printf("Found defensive squad %d", squads.at(i)->getID());
+			Broodwar->printf("Found defensive squad %d", squads.at(i)->getID());
 			sq->assist(defPos);
 		}
 	}

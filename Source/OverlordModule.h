@@ -26,6 +26,7 @@ protected:
 	int yMax;
 	bool mUnderAttack;
 	bool UnderAttack();
+	bool StayHome();
 	int mLastAttacked;
 	int mLastCallFrame;
 	//vector<EnemySpotted*>* mEnemySpotted;
