@@ -604,7 +604,7 @@ void Squad::assist(TilePosition mGoal)
 		//if (goal.x() == -1)
 		//{
 			setGoal(mGoal);
-			//Broodwar->printf("Sending to position %d, %d", mGoal.x(), mGoal.y());
+			Broodwar->printf("Sending to position %d, %d", mGoal.x(), mGoal.y());
 		//}
 	}
 }
