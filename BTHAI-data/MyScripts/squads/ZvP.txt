@@ -61,6 +61,7 @@ ActivePriority=25
 OffenseType=Optional
 <setup>
 Unit=Zerg_Ultralisk:6
+Unit=Zerg_Hydralisk:4
 <end>
 
 <start>
@@ -75,6 +76,7 @@ OffenseType=Optional
 Unit=Zerg_Queen:2
 Unit=Zerg_Ultralisk:8
 Unit=Zerg_Overlord:1
+Unit=Zerg_Hydralisk:4
 <end>
 
 
