@@ -19,7 +19,7 @@ OverlordAgent::OverlordAgent(Unit* mUnit)
 	mOverlordModule.push_back(new OverlordExplorer(this));
 	mOverlordModule.push_back(new OverlordMonitorPoints(this));
 	mOverlordModule.push_back(new OverlordGridSearch(this));
-	mCurrentModule = 0;
+	mCurrentModule = 1;
 
 	updateGoal();
 }

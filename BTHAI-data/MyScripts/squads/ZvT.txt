@@ -54,7 +54,7 @@ Move=Ground
 Name=LurkerSquad
 MorphsTo=Zerg_Lurker
 Priority=3
-ActivePriority=20
+ActivePriority=15
 OffenseType=Required
 <setup>
 Unit=Zerg_Hydralisk:9
@@ -66,7 +66,7 @@ Move=Ground
 Name=MainAttackSquad
 MorphsTo=
 Priority=5
-ActivePriority=15
+ActivePriority=20
 OffenseType=Required
 <setup>
 Unit=Zerg_Hydralisk:20
@@ -86,6 +86,7 @@ OffenseType=Optional
 Unit=Zerg_Defiler:3
 Unit=Zerg_Hydralisk:6
 <end>
+
 
 
 

@@ -44,7 +44,7 @@ Move=Ground
 Name=MainAttackSquad
 MorphsTo=
 Priority=10
-ActivePriority=25
+ActivePriority=20
 OffenseType=Required
 <setup>
 Unit=Zerg_Hydralisk:20
@@ -54,10 +54,10 @@ Unit=Zerg_Overlord:1
 <start>
 Type=Offensive
 Move=Ground
-Name=QueenSquad
+Name=Elite
 MorphsTo=
 Priority=10
-ActivePriority=10
+ActivePriority=25
 OffenseType=Optional
 <setup>
 Unit=Zerg_Ultralisk:6
@@ -69,12 +69,14 @@ Move=Ground
 Name=Heavy
 MorphsTo=
 Priority=11
-ActivePriority=15
+ActivePriority=18
 OffenseType=Optional
 <setup>
 Unit=Zerg_Queen:2
 Unit=Zerg_Ultralisk:8
+Unit=Zerg_Overlord:1
 <end>
+
 
 
 

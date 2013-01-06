@@ -1,18 +1,20 @@
-Lurker_Aspect:2
+Lurker_Aspect:1
+Zerg_Carapace:2
 Zerg_Carapace:3
 Zerg_Carapace:3
-Zerg_Carapace:3
+Zerg_Missile_Attacks:1
 Zerg_Missile_Attacks:2
-Zerg_Missile_Attacks:2
-Zerg_Missile_Attacks:2
-Zerg_Flyer_Attacks:2
-Zerg_Flyer_Attacks:2
-Zerg_Flyer_Attacks:2
+Zerg_Missile_Attacks:3
+Zerg_Flyer_Attacks:3
+Zerg_Flyer_Attacks:3
+Zerg_Flyer_Attacks:3
 Metasynaptic_Node: 1
 Dark_Swarm: 2
 Plague:3
 Pneumatized_Carapace: 3
-Grooved_Spines: 1
+Grooved_Spines: 2
+
+
 
 
 
