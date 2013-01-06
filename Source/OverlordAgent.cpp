@@ -28,7 +28,7 @@ OverlordAgent::OverlordAgent(Unit* mUnit)
 
 void OverlordAgent::updateGoal()
 {
-	mOverlordModule.at(mCurrentModule)->computeActions(this);
+	//mOverlordModule.at(mCurrentModule)->computeActions(this);
 }
 
 void OverlordAgent::computeActions()

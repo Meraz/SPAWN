@@ -38,10 +38,12 @@ void UpgradesPlanner::AddTech(TechType ltech)
 }
 bool UpgradesPlanner::checkUpgrade(BaseAgent* agent)
 {
+	bool CantBuildTech = false;
+	bool CantBuildUpgrade = false;
 	if (agent->isAlive() && agent->getUnit()->isIdle())
 	{
 		Unit* unit = agent->getUnit();
-		bool CantBuildTech = false;
+		
 		//Check techsP1
 		for (int i = 0; i < (int)techsP1.size(); i++)
 		{
@@ -109,27 +111,28 @@ bool UpgradesPlanner::checkUpgrade(BaseAgent* agent)
 					return true;
 				}
 			}
-			CantBuildTech = true;
+			CantBuildUpgrade = true;
 		}
 		//Check upgradesP2
-		if ((int)upgradesP1.size() == 0 || CantBuildTech == true)
+		if ((int)upgradesP1.size() == 0 || CantBuildUpgrade == true)
 		{
+			CantBuildUpgrade = false;
 			for (int i = 0; i < (int)upgradesP2.size(); i++)
 			{
 				UpgradeType type = upgradesP2.at(i);
 				if (canUpgrade(type, unit))
 				{
 					if (unit->upgrade(type))
-				{
+					{
 						upgradesP2.erase(upgradesP2.begin() + i);
 						return true;
 					}
 				}
 			}
-			CantBuildTech = true;
+			CantBuildUpgrade = true;
 		}
 		//Check upgradesP3
-		if ((int)upgradesP1.size() == 0 && (int)upgradesP2.size() == 0 || CantBuildTech == true)
+		if ((int)upgradesP1.size() == 0 && (int)upgradesP2.size() == 0 || CantBuildUpgrade == true)
 		{
 			for (int i = 0; i < (int)upgradesP3.size(); i++)
 			{
@@ -137,7 +140,7 @@ bool UpgradesPlanner::checkUpgrade(BaseAgent* agent)
 				if (canUpgrade(type, unit))
 				{
 					if (unit->upgrade(type))
-				{
+					{
 						upgradesP3.erase(upgradesP3.begin() + i);
 						return true;
 					}
