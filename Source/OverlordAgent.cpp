@@ -13,7 +13,7 @@ OverlordAgent::OverlordAgent(Unit* mUnit)
 	
 	lastUpdateFrame = Broodwar->getFrameCount();
 
-	goal = TilePosition(-1,-1);
+	goal = Broodwar->self()->getStartLocation();
 
 	mOverlordModule = vector<OverlordModule*>();
 	mOverlordModule.push_back(new OverlordExplorer(this));
@@ -47,3 +47,4 @@ void OverlordAgent::SetOverlordModule(OverlordState lState, void* lParamter)
 	mCurrentModule = (int)lState;
 	mOverlordModule.at(mCurrentModule)->UpdateParamter(lParamter);	
 }
+

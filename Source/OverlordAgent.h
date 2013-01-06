@@ -29,6 +29,7 @@ private:
 //	OverlordModule mCurrentModule;
 	void updateGoal();
 
+
 public:
 	OverlordAgent(Unit* mUnit);
 

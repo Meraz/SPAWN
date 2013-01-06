@@ -13,6 +13,8 @@ private:
 
 	void NextGoal();
 	int MovementYdirection; //swap when we reach the top or bot
+	int mLastChangedDir;
+	bool mFirstTime;
 
 
 public:
