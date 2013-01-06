@@ -52,9 +52,6 @@ void OverlordManager::AddPointOfInterest(PointOfInterest* lPoint)
 			}
 		}
 	}
-	//Broodwar->printf("Point added in manager");
-	//Broodwar->printf("Point added at x: %d", lPoint->mUnit->getPosition().x());
-	//Broodwar->printf("Point added at y: %d", lPoint->mUnit->getPosition().y());
 	mPointOfInterest->push_back(lPoint);
 }
 
@@ -99,8 +96,6 @@ void OverlordManager::UpdateGoal()
 
 void OverlordManager::UniHatchery()
 {
-	if(a)
-		return;
 	if(mOverlord.size() >= 1)
 	{
 		mOverlord.at(0)->SetOverlordModule(OverlordState::Explore, (void*)0);
@@ -109,15 +104,14 @@ void OverlordManager::UniHatchery()
 	if(mOverlord.size() >= 2)
 	{
 		mOverlord.at(1)->SetOverlordModule(OverlordState::Monitor, (void*)mPointOfInterest->at(0));
-	}
+	}	
 	for(int i = 2; i < mOverlord.size(); i++)
 	{ 
-		if(i % 2 == 0)
+		if(i < 4)
 			mOverlord.at(i)->SetOverlordModule(OverlordState::Explore, (void*)0);
 		else
-			mOverlord.at(i)->SetOverlordModule(OverlordState::GridSearch, (void*)0);
+			mOverlord.at(1)->SetOverlordModule(OverlordState::Monitor, (void*)mPointOfInterest->at(0));
 	}
-	a = true;
 }
 
 void OverlordManager::DuHatchery()

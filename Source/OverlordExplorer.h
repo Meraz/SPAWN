@@ -15,7 +15,6 @@ public:
 
 private:
 	int mLastAttacked;
-	bool mUnderAttack;
 	int mLastCallFrame;
 };
 

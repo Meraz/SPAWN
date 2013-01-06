@@ -19,6 +19,8 @@ public:
 	virtual void computeActions(UnitAgent* lAgent);
 
 protected:
+	//bool mUnderAttack;
+	bool UnderAttack();
 	//vector<EnemySpotted*>* mEnemySpotted;
 	//vector<PointOfInterest*>* mPointOfInterest;
 
